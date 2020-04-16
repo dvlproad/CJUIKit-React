@@ -93,7 +93,7 @@ export default class CJCollectionCell extends Component {
             >
                 <div style={{
                     display: 'flex',
-                    // flex:1,
+                    height: '100%',
                     flexDirection:"column",
                     justifyContent:"center",
                     alignItems:"center"
@@ -108,10 +108,10 @@ export default class CJCollectionCell extends Component {
                             }
                         }
                         src={this.props.moduleModel.imageSource}
-                        resizeMode={'stretch'}
+                        resizemode={'stretch'}
                     />
 
-                    <div style={{   //单行文本水平&垂直居中
+                    <div style={Object.assign({   //单行文本水平&垂直居中
                         display: 'flex',
                         justifyContent:"center",
                         alignItems:"center",
@@ -119,11 +119,11 @@ export default class CJCollectionCell extends Component {
                         fontSize: 16,
                         textAlign: 'center',
                         lineHeight:22,
-                    }, {marginTop: 20}} >
+                    }, {marginTop: 20})} >
                         {this.props.moduleModel.title}
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }

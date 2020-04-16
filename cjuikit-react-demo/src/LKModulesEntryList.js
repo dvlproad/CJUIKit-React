@@ -46,7 +46,7 @@ export default class LKModulesEntryList extends Component {
 
     render() {
         // const screenWidth = Dimensions.get('window').width;
-        const screenWidth = 400;
+        const screenWidth = window.screen.width;
         const listWidth = screenWidth;
 
         return (

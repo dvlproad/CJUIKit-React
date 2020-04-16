@@ -42,6 +42,7 @@ import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
 import CJCollectionCell  from './CJCollectionCell';
 import CJBaseCollectionView from './CJBaseCollectionView';
+import ObjectCJHelper from './Helper/ObjectCJHelper';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
@@ -123,11 +124,11 @@ export default class CJCollectionView extends CJBaseCollectionView {
             borderRadius: 6,
             borderWidth: 0,
         };
-        // let collectCellStyle = {defaultCollectCellStyle, richCollectCellStyle};
+        let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
 
         return (
             <CJCollectionCell
-                style={{defaultCollectCellStyle, richCollectCellStyle}}
+                style={collectCellStyle}
 
                 moduleModel={item}
                 defaultSource={this.props.imageDefaultSource}

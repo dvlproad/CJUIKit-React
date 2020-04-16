@@ -34,12 +34,12 @@ function App() {
 
     const moduleModels = [
         {
-            title: "通知发货",
+            title: "通知发货1",
             imageSource: require('./resources/images/icon_await_check.png'),
             nextPageName: "TSDescriptionListPage",
         },
         {
-            title: "采购单查询",
+            title: "采购单查询2",
             imageSource: require('./resources/images/icon_await_check.png'),
             nextPageName: "TSDescriptionListPage",
         },
@@ -54,12 +54,12 @@ function App() {
             nextPageName: "TSDescriptionListPage",
         },
         {
-            title: "采购单查询4",
+            title: "采购单查询5",
             imageSource: require('./resources/images/icon_await_check.png'),
             nextPageName: "TSDescriptionListPage",
         },
         {
-            title: "采购单查询4",
+            title: "采购单查询6",
             imageSource: require('./resources/images/icon_await_check.png'),
             nextPageName: "TSDescriptionListPage",
         },
@@ -146,7 +146,7 @@ function App() {
 
     function CollectionView2(props) {
         // const screenWidth = Dimensions.get('window').width;
-        const screenWidth = 400;
+        const screenWidth = window.screen.width;
         const listWidth = screenWidth;
 
         return (
@@ -166,6 +166,26 @@ function App() {
         );
     }
 
+    function ModulesEntryList(props) {
+        return (
+            <LKModulesEntryList
+                // navigation={this.props.navigation}
+                moduleModels={ [
+                    {
+                        title: "通知发货",
+                        imageSource: require('./resources/images/icon_await_check.png'),
+                        nextPageName: "TSDescriptionListPage",
+                    },
+                    {
+                        title: "采购单查询",
+                        imageSource: require('./resources/images/icon_await_check.png'),
+                        nextPageName: "TSDescriptionListPage",
+                    },
+                ]}
+            />
+        )
+    }
+
     let testType = 4;
     if (testType == 1) {
         return (
@@ -183,58 +203,12 @@ function App() {
         return (
             <CollectionView2 />
         );
+    } else if (testType == 5) {
+        return (
+            <ModulesEntryList />
+        )
     }
 
-  // return (
-  //     <li
-  //         style={{ backgroundColor: '#F4F4F4' }}
-  //         // scrollEnabled={this.props.scrollEnabled}
-  //         data={datas}
-  //         keyExtractor={(item, index) => index.toString()}
-  //         renderItem={({ item, index }) => {
-  //           let cellMarginRight = 10;
-  //           let cellMarginBottom = 10;
-  //
-  //           let defaultCollectCellStyle = {
-  //             width: 100,
-  //             height: 100,
-  //             marginRight: cellMarginRight,
-  //             marginBottom: cellMarginBottom,
-  //             backgroundColor: '#FFFFFF',
-  //             borderRadius: 6,
-  //             borderWidth: 0,
-  //           };
-  //
-  //           return (
-  //               this.renderCollectionCell(item, index, defaultCollectCellStyle)
-  //           )
-  //         }}
-  //         numColumns={2}
-  //
-  //         // ListHeaderComponent={listHeaderComponent}
-  //     />
-  // )
-
-
-
-
-  return (
-      <LKModulesEntryList
-          // navigation={this.props.navigation}
-          moduleModels={ [
-            {
-              title: "通知发货",
-              imageSource: require('./resources/images/icon_await_check.png'),
-              nextPageName: "TSDescriptionListPage",
-            },
-            {
-              title: "采购单查询",
-              imageSource: require('./resources/images/icon_await_check.png'),
-              nextPageName: "TSDescriptionListPage",
-            },
-          ]}
-      />
-  );
 
   // return (
   //   <div className="App">

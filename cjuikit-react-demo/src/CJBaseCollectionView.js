@@ -14,7 +14,6 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // import { FlatList, View, ViewPropTypes } from "react-native";
 import { ObjectCJHelper } from './Helper/ObjectCJHelper';
-import CJCollectionCell from "./CJCollectionCell";
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
@@ -171,15 +170,18 @@ export default class CJBaseCollectionView extends Component {
 
 
         return (
-            <div style={{ backgroundColor: '#F4F4F4' }, this.props.style, sectionInsetStyle, {
-                flex:1,
-                display: 'flex',
-                flexWrap: 'wrap',
-                flexDirection: 'row',
-                // justifyContent: 'space-around',
-                // alignItems: 'center',
-            }}
+            <div style={ObjectCJHelper.dealPropStyle([{ backgroundColor: '#F4F4F4' }, this.props.style,
+                { width: this.props.listWidth}, sectionInsetStyle])}
             >
+                <div style={{
+                        flex:1,
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        flexDirection: 'row',
+                        // justifyContent: 'space-around',
+                        // alignItems: 'center',
+                    }}
+                >
                 {
                     renderDataModels.map((item, index) => {
                         let cellMarginRight = this.__getBoxHorizontalInterval(index, perRowMaxShowCount, boxHorizontalInterval);
@@ -201,38 +203,8 @@ export default class CJBaseCollectionView extends Component {
 
                     })
                 }
+                </div>
             </div>
-        )
-
-
-        return (
-            <li
-                style={{ backgroundColor: '#F4F4F4' }, this.props.style, sectionInsetStyle}
-                scrollEnabled={this.props.scrollEnabled}
-                data={renderDataModels}
-                keyExtractor={(item, index) => index.toString()}
-                renderItem={({ item, index }) => {
-                    let cellMarginRight = this.__getBoxHorizontalInterval(index, perRowMaxShowCount, boxHorizontalInterval);
-                    let cellMarginBottom = this.__getBoxVerticalInterval(index, lastRowStartIndex, boxVerticalInterval);
-
-                    let defaultCollectCellStyle = {
-                        width: boxWidth,
-                        height: boxHeight,
-                        marginRight: cellMarginRight,
-                        marginBottom: cellMarginBottom,
-                        backgroundColor: '#FFFFFF',
-                        borderRadius: 6,
-                        borderWidth: 0,
-                    };
-
-                    return (
-                        this.renderCollectionCell(item, index, defaultCollectCellStyle)
-                    )
-                }}
-                numColumns={perRowMaxShowCount}
-
-            // ListHeaderComponent={listHeaderComponent}
-            />
         )
     }
 }
