@@ -4,6 +4,7 @@ import './App.css';
 import awaitUrl from './resources/images/icon_await_check.png';
 import LKModulesEntryList from "./LKModulesEntryList";
 import CJCollectionCell from "./CJCollectionCell";
+import CJCollectionView from "./CJCollectionView";
 
 function App() {
   // return (
@@ -31,7 +32,7 @@ function App() {
   //     />
   // );
 
-    const datas = [
+    const moduleModels = [
         {
             title: "通知发货",
             imageSource: require('./resources/images/icon_await_check.png'),
@@ -52,54 +53,139 @@ function App() {
             imageSource: require('./resources/images/icon_await_check.png'),
             nextPageName: "TSDescriptionListPage",
         },
+        {
+            title: "采购单查询4",
+            imageSource: require('./resources/images/icon_await_check.png'),
+            nextPageName: "TSDescriptionListPage",
+        },
+        {
+            title: "采购单查询4",
+            imageSource: require('./resources/images/icon_await_check.png'),
+            nextPageName: "TSDescriptionListPage",
+        },
     ];
 
-  function NumberList(props) {
-    // const numbers = [1, 2, 3, 4, 5, 6];
-    // return (
-    //     numbers.map((number) =>
-    //         <li key={number.toString()}>
-    //           {number}
-    //         </li>
-    //     )
-    // );
-      return (
-          datas.map((item) =>
-              <div key={item.title}
-                  numColumns={2}
-              >
-                  <CJCollectionCell
-                      style={[{
-                          width: 100,
-                          height: 100,
-                          marginRight: 10,
-                          marginBottom: 10,
-                          backgroundColor: '#FFFFFF',
-                          borderRadius: 6,
-                          borderWidth: 0,
-                      }, {
-                          backgroundColor: '#FFFFFF',
-                          borderRadius: 6,
-                          borderWidth: 0,
-                      }]}
-
-                      moduleModel={{
-                          title: "通知发货",
-                          imageSource: require('./resources/images/icon_await_check.png'),
-                          nextPageName: "TSDescriptionListPage",
-                      }}
-                      // clickButtonHandle={this.props.clickButtonHandle}
-                  />
-              </div>
-          )
-      );
+  function NumberList1(props) {
+    const numbers = [1, 2, 3, 4, 5, 6];
+    return (
+        numbers.map((number) =>
+            <li key={number.toString()}>
+              {number}
+            </li>
+        )
+    );
   }
 
 
+  function NumberList2(props) {
+      const numbers = [1, 2, 3, 4, 5, 6];
+      return (
+          <div style={{
+              // flex:1,
+              display: 'flex',
+              backgroundColor: 'red',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+          }}
+          >
+              {
+                  numbers.map((number) =>
+                      <li key={number.toString()}>
+                          {number}
+                      </li>
+                  )
+              }
+          </div>
+      );
+  }
 
-  return (
-      <NumberList />
+  function CollectionView1(props) {
+      return (
+          <div style={{
+              flex:1,
+              display: 'flex',
+              flexWrap: 'wrap',
+              backgroundColor:'red',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+          }}
+          >
+              {
+                  moduleModels.map((moduleModel) => {
+                      return (
+                          <CJCollectionCell
+                              style={{
+                                  width: 100,
+                                  height: 100,
+                                  marginBottom: 10,
+                                  backgroundColor: 'blue',
+                                  borderRadius: 6,
+                                  borderWidth: 0,
+                                  display: 'inline-block',
+                                  // flex: 1,
+                                  justifyContent: 'center',
+                                  alignItems: 'center'
+                              }}
 
+                              moduleModel={{
+                                  title: "通知发货",
+                                  imageSource: require('./resources/images/icon_await_check.png'),
+                                  nextPageName: "TSDescriptionListPage",
+                              }}
+                              // clickButtonHandle={this.props.clickButtonHandle}
+                          />
+                      )
+                  })
+              }
+          </div>
+      )
+  }
+
+
+    function CollectionView2(props) {
+        // const screenWidth = Dimensions.get('window').width;
+        const screenWidth = 400;
+        const listWidth = screenWidth;
+
+        return (
+            <CJCollectionView
+                // style={{paddingHorizontal: 40}}   //谨记：这边设置无效
+                style={{backgroundColor: 'green'}}
+                listWidth={listWidth}
+                sectionInset={{top:15, left:15, bottom:15, right:15}}
+                cellWidthFromPerRowMaxShowCount={2} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度
+                // cellWidthFromFixedWidth={165}       // 通过cell的固定宽度来设置每个cell的宽度
+                widthHeightRatio={165/165}
+                minimumInteritemSpacing={15}
+                minimumLineSpacing={10}
+                dataModels={moduleModels}
+                // clickButtonHandle={this._execModuleModel}
+            />
+        );
+    }
+
+    let testType = 4;
+    if (testType == 1) {
+        return (
+            <NumberList1 />
+        );
+    } else if (testType == 2) {
+        return (
+            <NumberList2 />
+        );
+    } else if (testType == 3) {
+        return (
+            <CollectionView1 />
+        );
+    } else if (testType == 4) {
+        return (
+            <CollectionView2 />
+        );
+    }
+
+  // return (
   //     <li
   //         style={{ backgroundColor: '#F4F4F4' }}
   //         // scrollEnabled={this.props.scrollEnabled}
@@ -127,25 +213,28 @@ function App() {
   //
   //         // ListHeaderComponent={listHeaderComponent}
   //     />
-  )
+  // )
 
-  // return (
-  //     <LKModulesEntryList
-  //         // navigation={this.props.navigation}
-  //         moduleModels={ [
-  //           {
-  //             title: "通知发货",
-  //             imageSource: require('./resources/images/icon_await_check.png'),
-  //             nextPageName: "TSDescriptionListPage",
-  //           },
-  //           {
-  //             title: "采购单查询",
-  //             imageSource: require('./resources/images/icon_await_check.png'),
-  //             nextPageName: "TSDescriptionListPage",
-  //           },
-  //         ]}
-  //     />
-  // );
+
+
+
+  return (
+      <LKModulesEntryList
+          // navigation={this.props.navigation}
+          moduleModels={ [
+            {
+              title: "通知发货",
+              imageSource: require('./resources/images/icon_await_check.png'),
+              nextPageName: "TSDescriptionListPage",
+            },
+            {
+              title: "采购单查询",
+              imageSource: require('./resources/images/icon_await_check.png'),
+              nextPageName: "TSDescriptionListPage",
+            },
+          ]}
+      />
+  );
 
   // return (
   //   <div className="App">

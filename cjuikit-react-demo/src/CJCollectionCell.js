@@ -86,12 +86,18 @@ export default class CJCollectionCell extends Component {
     render() {
         return (
             <div
-                // style={this.props.style}
+                style={this.props.style}
                 // onPress={()=> {
                 //     this.props.clickButtonHandle(this.props.buttonIndex);
                 // }}
             >
-                <div style={{flex:1, flexDirection:"column", justifyContent:"center", alignItems:"center"}} >
+                <div style={{
+                    display: 'flex',
+                    // flex:1,
+                    flexDirection:"column",
+                    justifyContent:"center",
+                    alignItems:"center"
+                }} >
                     <img
                         style={{
                                 width: 42,
@@ -106,6 +112,9 @@ export default class CJCollectionCell extends Component {
                     />
 
                     <div style={{   //单行文本水平&垂直居中
+                        display: 'flex',
+                        justifyContent:"center",
+                        alignItems:"center",
                         height: 22,
                         fontSize: 16,
                         textAlign: 'center',
