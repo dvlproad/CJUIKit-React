@@ -126,6 +126,7 @@ export default class CJCollectionView extends CJBaseCollectionView {
         };
         let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
 
+        //let collectCellStyle = { ...defaultCollectCellStyle, ...richCollectCellStyle}; //方法二
         return (
             <CJCollectionCell
                 style={collectCellStyle}
