@@ -113,9 +113,10 @@ function App() {
           }}
           >
               {
-                  moduleModels.map((moduleModel) => {
+                  moduleModels.map((moduleModel, index) => {
                       return (
                           <CJCollectionCell
+                              key={index.toString()}
                               style={{
                                   width: 100,
                                   height: 100,

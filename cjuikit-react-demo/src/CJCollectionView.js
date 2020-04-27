@@ -37,12 +37,12 @@ import { CJCollectionView } from '../../LuckinBaseUIKit/LuckinBaseUIKit';
                     }}
             />
  */
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
 import CJCollectionCell  from './CJCollectionCell';
 import CJBaseCollectionView from './CJBaseCollectionView';
-import ObjectCJHelper from './Helper/ObjectCJHelper';
+// import ObjectCJHelper from './Helper/ObjectCJHelper';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;

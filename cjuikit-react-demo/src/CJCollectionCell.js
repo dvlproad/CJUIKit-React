@@ -108,6 +108,7 @@ export default class CJCollectionCell extends Component {
                             }
                         }
                         src={this.props.moduleModel.imageSource}
+                        alt=""
                         resizemode={'stretch'}
                     />
 
