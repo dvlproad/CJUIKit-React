@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button } from 'antd-mobile';
+import { Button, SearchBar} from 'antd-mobile';
 import './App.css';
 
 const App = () => (
     <div className="App">
-      <Button type="primary">Button</Button>
+        <Button type="primary">Button</Button>
+        <SearchBar placeholder="Search" maxLength={8} />
     </div>
 );
 
