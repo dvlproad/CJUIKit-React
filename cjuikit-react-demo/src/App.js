@@ -171,16 +171,17 @@ function App() {
         return (
             <LKModulesEntryList
                 // navigation={this.props.navigation}
+                history={props.history}
                 moduleModels={ [
                     {
                         title: "通知发货",
                         imageSource: require('./resources/images/icon_await_check.png'),
-                        nextPageName: "TSDescriptionListPage",
+                        nextPageName: "TSImagesChooseListPage",
                     },
                     {
                         title: "采购单查询",
                         imageSource: require('./resources/images/icon_await_check.png'),
-                        nextPageName: "TSDescriptionListPage",
+                        nextPageName: "TSImagesChooseListPage",
                     },
                 ]}
             />

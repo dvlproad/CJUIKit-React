@@ -87,9 +87,10 @@ export default class CJCollectionCell extends Component {
         return (
             <div
                 style={this.props.style}
-                // onPress={()=> {
-                //     this.props.clickButtonHandle(this.props.buttonIndex);
-                // }}
+                onClick={()=> {
+                    console.log('点击了cell');
+                    this.props.clickButtonHandle(this.props.buttonIndex);
+                }}
             >
                 <div style={{
                     display: 'flex',

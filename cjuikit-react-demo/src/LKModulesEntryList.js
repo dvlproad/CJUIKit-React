@@ -35,6 +35,9 @@ export default class LKModulesEntryList extends Component {
         if (moduleModel.clickButtonHandle) {
             moduleModel.clickButtonHandle(index, moduleModel);
         } else if (moduleModel.nextPageName && moduleModel.nextPageName.length > 0) {
+            console.log('准备进入下一页' +  moduleModel.nextPageName);
+            console.log( 'history = ' + this.props.history);
+            this.props.history && this.props.history.push(moduleModel.nextPageName);
             // this.props.navigation.navigate(moduleModel.nextPageName);
             // LKRouteUtil.push(this.props.navigation, moduleModel.nextPageName, {});
         } else {
