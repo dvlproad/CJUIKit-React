@@ -130,7 +130,7 @@ export default class CJBaseCollectionView extends Component {
             }
 
             const cellsWidth = validWidth - (perRowMaxShowCount - 1) * minimumInteritemSpacing;
-            boxWidth = Math.ceil(cellsWidth / perRowMaxShowCount);
+            boxWidth = Math.floor(cellsWidth / perRowMaxShowCount); // 向下取整，防止因过大而换行
 
             boxHorizontalInterval = minimumInteritemSpacing;
         }

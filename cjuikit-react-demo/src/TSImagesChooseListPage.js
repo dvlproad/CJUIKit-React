@@ -29,6 +29,7 @@ import React, {Component} from 'react';
 // } from '@luckin/react-native-theme-uikit';
 
 import CJImageActionCollectionView, { CJImageUploadType as LKImageUploadType }  from './CJImageActionCollectionView'
+import LKImagesChooseList from './LKImagesChooseList';
 
 export const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
@@ -117,8 +118,7 @@ export default class TSImagesChooseListPage extends Component {
 
     addImageHandle=(index) => {
         // LKToastUtil.showMessage("添加图片" + index);
-        //let imageModel = {imageSource: CJTSDefaultImages.networkImageSource1};
-        let imageModel = {imageSource: require('./resources/images/icon_await_check.png')};
+        let imageModel = {imageSource: CJTSDefaultImages.networkImageCar};
 
         let imageModels = this.state.imageModels;
         imageModels.splice(index-1, 0, imageModel);
@@ -131,8 +131,8 @@ export default class TSImagesChooseListPage extends Component {
     render() {
         return (
             <div style={{ backgroundColor:"green"}}>
-                <CJImageActionCollectionView
-                    dataModels={this.state.imageModels}
+                <LKImagesChooseList
+                    imageModels={this.state.imageModels}
 
                     imageLoadedCountChange={this.imageLoadedCountChange}
 

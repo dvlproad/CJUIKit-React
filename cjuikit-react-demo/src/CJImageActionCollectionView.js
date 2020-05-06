@@ -41,7 +41,7 @@ import { CJImageLookCollectionView } from '../../CJBaseUIKit/CJBaseUIKit';
 import React from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
-// import CJActionLoadingImage  from '../image/CJActionLoadingImage';
+import CJActionLoadingImage  from './image/CJActionLoadingImage';
 
 // import {CJImageUploadType} from "../image/utils/CJImageUtil";
 
@@ -82,7 +82,7 @@ export default class CJImageActionCollectionView extends CJBaseCollectionView {
         isEditing: PropTypes.bool,
         hasAddIconWhenEditing: PropTypes.bool,  // 在编辑时候是否显示添加图片的按钮
         imageMaxCount: PropTypes.number,        // 最大显示的图片个数(当达到指定图片最大量后，添加图片按钮不在显示)
-        addImageSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),       // 添加图片的数据源
+        // addImageSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),       // 添加图片的数据源
     };
 
     static defaultProps = {
@@ -227,64 +227,65 @@ export default class CJImageActionCollectionView extends CJBaseCollectionView {
             borderWidth: 0,
         };
         // let collectCellStyle = [defaultCollectCellStyle, richCollectCellStyle];  // TODO: 请确认并修正使用此方式时候，CJLoadingImage的布局
-        Object.assign(defaultCollectCellStyle, richCollectCellStyle);
-        let collectCellStyle = defaultCollectCellStyle;
+        let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
+        // let collectCellStyle = defaultCollectCellStyle;
 
-        item = {
-            title: "位置" + index,
-            imageSource: item.imageSource
-        };
-
-        return (
-            <CJCollectionCell
-                style={collectCellStyle}
-                key={index.toString()}
-
-                moduleModel={item}
-                defaultSource={this.props.imageDefaultSource}
-                imageBorderStyle={this.props.imageBorderStyle}
-
-                buttonIndex={index}
-                clickButtonHandle={this.clickButtonHandle}
-
-                onLoadComplete={(buttonIndex)=>{
-                    this.onLoadComplete(buttonIndex)
-                }}
-
-                needLoadingAnimation={item.needLoadingAnimation}
-            />
-        )
-
-
-
-        // return (
-        //     <CJActionLoadingImage
-        //         style={collectCellStyle}
+        // item = {
+        //     title: "位置" + index,
+        //     imageSource: item.imageSource
+        // };
         //
-        //         source={item.imageSource}
+        // return (
+        //     <CJCollectionCell
+        //         style={collectCellStyle}
+        //         key={index.toString()}
+        //
+        //         moduleModel={item}
         //         defaultSource={this.props.imageDefaultSource}
-        //         imageBorderStyle={this.getImageBorderStyle(index)}
+        //         imageBorderStyle={this.props.imageBorderStyle}
         //
         //         buttonIndex={index}
-        //         // onLoadComplete={this.props.onLoadComplete}
+        //         clickButtonHandle={this.clickButtonHandle}
+        //
         //         onLoadComplete={(buttonIndex)=>{
         //             this.onLoadComplete(buttonIndex)
         //         }}
         //
-        //         clickButtonHandle={this.clickButtonHandle}
-        //
-        //         uploadType={item.uploadType}
-        //         uploadProgress={item.uploadProgress}
         //         needLoadingAnimation={item.needLoadingAnimation}
-        //         changeShowDebugMessage={this.props.changeShowDebugMessage}
-        //
-        //         isEditing={this.props.isEditing}
-        //         isAddIcon={this.isAddIcon(index)}
-        //         deleteImageHandle={this.deleteImageHandle}
-        //         deleteButtonWidth={this.props.deleteButtonWidth}
-        //         imageTopRightForDeleteButtonCenterOffset={this.props.imageTopRightForDeleteButtonCenterOffset}
         //     />
-        // );
+        // )
+
+
+
+        return (
+            <CJActionLoadingImage
+                style={collectCellStyle}
+                key={index.toString()}
+
+                source={item.imageSource}
+                defaultSource={this.props.imageDefaultSource}
+                imageBorderStyle={this.getImageBorderStyle(index)}
+
+                buttonIndex={index}
+                // onLoadComplete={this.props.onLoadComplete}
+                onLoadComplete={(buttonIndex)=>{
+                    this.onLoadComplete(buttonIndex)
+                }}
+
+                clickButtonHandle={this.clickButtonHandle}
+
+                uploadType={item.uploadType}
+                uploadProgress={item.uploadProgress}
+                needLoadingAnimation={item.needLoadingAnimation}
+                changeShowDebugMessage={this.props.changeShowDebugMessage}
+
+                isEditing={this.props.isEditing}
+                isAddIcon={this.isAddIcon(index)}
+                deleteImageHandle={this.deleteImageHandle}
+                deleteButtonWidth={this.props.deleteButtonWidth}
+                imageTopRightForDeleteButtonCenterOffset={this.props.imageTopRightForDeleteButtonCenterOffset}
+            />
+        );
     }
 
 
