@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import awaitUrl from './resources/images/icon_await_check.png';
 import LKModulesEntryList from "./LKModulesEntryList";
 import CJCollectionCell from "./CJCollectionCell";
 import CJCollectionView from "./CJCollectionView";
@@ -120,6 +119,7 @@ function App() {
                               style={{
                                   width: 100,
                                   height: 100,
+                                  marginTop: 10,
                                   marginBottom: 10,
                                   backgroundColor: 'blue',
                                   borderRadius: 6,
@@ -187,24 +187,24 @@ function App() {
         )
     }
 
-    let testType = 4;
-    if (testType == 1) {
+    let testType = 5;
+    if (testType === 1) {
         return (
             <NumberList1 />
         );
-    } else if (testType == 2) {
+    } else if (testType === 2) {
         return (
             <NumberList2 />
         );
-    } else if (testType == 3) {
+    } else if (testType === 3) {
         return (
             <CollectionView1 />
         );
-    } else if (testType == 4) {
+    } else if (testType === 4) {
         return (
             <CollectionView2 />
         );
-    } else if (testType == 5) {
+    } else if (testType === 5) {
         return (
             <ModulesEntryList />
         )

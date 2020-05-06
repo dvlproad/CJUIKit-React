@@ -53,9 +53,9 @@ export default class CJBaseCollectionView extends Component {
 
     // 获取当前box与下一个box之间的水平间隔
     __getBoxHorizontalInterval = (index, perRowMaxShowCount, boxHorizontalInterval) => {
-        let isLastColumn = (index + 1) % perRowMaxShowCount == 0;
+        let isLastColumn = (index + 1) % perRowMaxShowCount === 0;
 
-        if (isLastColumn == true) {
+        if (isLastColumn === true) {
             return 0;
         }
         return boxHorizontalInterval;
@@ -119,7 +119,7 @@ export default class CJBaseCollectionView extends Component {
 
         } else { // 按列数时候：列数不变，间距不变，固定为minimumInteritemSpacing；宽会变
             perRowMaxShowCount = this.props.cellWidthFromPerRowMaxShowCount;
-            if (ObjectCJHelper.isNullForObject(perRowMaxShowCount) || perRowMaxShowCount == 0) {
+            if (ObjectCJHelper.isNullForObject(perRowMaxShowCount) || perRowMaxShowCount === 0) {
                 expect.assertions(1)
             }
 
@@ -170,8 +170,12 @@ export default class CJBaseCollectionView extends Component {
 
 
         return (
-            <div style={ObjectCJHelper.dealPropStyle([{ backgroundColor: '#F4F4F4' }, this.props.style,
-                { width: this.props.listWidth}, sectionInsetStyle])}
+            <div style={ObjectCJHelper.dealPropStyle([
+                    { backgroundColor: '#F4F4F4', boxSizing: 'border-box' },
+                    this.props.style,
+                    { width: this.props.listWidth},
+                    sectionInsetStyle
+                ])}
             >
                 <div style={{
                         flex:1,

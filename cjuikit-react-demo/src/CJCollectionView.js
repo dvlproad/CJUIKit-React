@@ -97,7 +97,7 @@ export default class CJCollectionView extends CJBaseCollectionView {
 
 
     componentDidMount() {
-        let isImageAllLoaded = this.props.dataModels.length == 0;
+        let isImageAllLoaded = this.props.dataModels.length === 0;
         if (isImageAllLoaded) {
             this.props.imageLoadedCountChange(this.state.imageLoadedCount, isImageAllLoaded);
         }
@@ -130,6 +130,7 @@ export default class CJCollectionView extends CJBaseCollectionView {
         return (
             <CJCollectionCell
                 style={collectCellStyle}
+                key={index.toString()}
 
                 moduleModel={item}
                 defaultSource={this.props.imageDefaultSource}
@@ -145,5 +146,9 @@ export default class CJCollectionView extends CJBaseCollectionView {
                 needLoadingAnimation={item.needLoadingAnimation}
             />
         );
+    }
+
+    render() {
+        return super.render();
     }
 }

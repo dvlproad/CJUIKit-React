@@ -24,7 +24,7 @@ export class ObjectCJHelper {
         }
 
         if (typeof object === "string") {
-            if (object.length == 0) {
+            if (object.length === 0) {
                 return true;
             }
             return false;
@@ -50,7 +50,7 @@ export class ObjectCJHelper {
      * @returns {boolean}
      */
     static isArray(object) {
-        return Object.prototype.toString.call(object)== '[object Array]';
+        return Object.prototype.toString.call(object)=== '[object Array]';
     }
 
     /**
