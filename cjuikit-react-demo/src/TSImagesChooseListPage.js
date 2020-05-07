@@ -3,12 +3,13 @@
  *
  * @Description: TSImagesChooseListPage
  *
- * @author      chaoqian.li
- * @email       chaoqian.li@luckincoffee.com
- * @date        2019/11/15 11:02 上午
+ * @author      ciyouzen
+ * @email       dvlproad@163.com
+ * @date        2020/5/7 13:51:06
  *
  * Copyright (c) dvlproad. All rights reserved.
  */
+
 import React, {Component} from 'react';
 // import { View } from 'react-native';
 // import {
@@ -28,7 +29,7 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import CJImageActionCollectionView, { CJImageUploadType as LKImageUploadType }  from './CJImageActionCollectionView'
+import { CJImageUploadType as LKImageUploadType }  from './CJImageActionCollectionView'
 import LKImagesChooseList from './LKImagesChooseList';
 
 export const CJTSDefaultImages = {
@@ -121,7 +122,7 @@ export default class TSImagesChooseListPage extends Component {
         let imageModel = {imageSource: CJTSDefaultImages.networkImageCar};
 
         let imageModels = this.state.imageModels;
-        imageModels.splice(index-1, 0, imageModel);
+        imageModels.splice(index, 0, imageModel);
         this.setState({
             imageModels: imageModels
         })

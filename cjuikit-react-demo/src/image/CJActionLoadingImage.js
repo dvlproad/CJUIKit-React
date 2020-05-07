@@ -134,7 +134,7 @@ export default class CJActionLoadingImage extends Component {
         let deleteButtonStyle = {
             position:'absolute',
             width: deleteButtonWidth,
-            height: deleteButtonWidth
+            height: deleteButtonWidth,
         };
         let deleteImageButton = shouldShowDeleteButton ?
             (
@@ -178,7 +178,13 @@ export default class CJActionLoadingImage extends Component {
                     this.props.clickButtonHandle(this.props.buttonIndex);
                 }}
             >
-                <div style={{flex:1, flexDirection:"row-reverse"}} >
+                <div
+                    style={{
+                        display:'flex',
+                        flex:1,
+                        flexDirection:"row-reverse"
+                    }}
+                >
                     <img
                         style={imageStyle}
                         src={this.props.source}
@@ -212,9 +218,9 @@ class LuckinImageDeleteButton extends Component {
 
     render() {
         return (
-            <div
+            <img
                 style={this.props.style}
-                source={require('./resources/imageDelete_blue.png')}
+                src={require('./resources/imageDelete_blue.png')}
                 onClick={this.props.onPress}
             />
         )
