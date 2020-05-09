@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
 // import App from './App';
+
 // import App from './TS1StudyListPage';
-// import App from './TS2TestBaseCollectionViewPage';
-// import App from './TS3TestCollectionViewCellPage';
-// import App from './TS4CollectionViewPage';
-// import App from './TSModulesEntryListPage';
-import App from './TSImagesChooseListPage';
+
+// import App from './TS2BaseCollectionViewPage';
+
+// import App from './TS31ModuleCollectionViewCellPage';
+// import App from './TS32ModuleCollectionViewPage';
+// import App from './TS33ModuleActionCollectionViewPage';
+
+import App from './TS41ImageLookCollectionViewCellPage';
+
+// import App from './TS51ImageActionCollectionViewCellPage';
+
+// import App from './TSImagesChooseListPage';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

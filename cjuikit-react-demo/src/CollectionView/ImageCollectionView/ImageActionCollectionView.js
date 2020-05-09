@@ -41,12 +41,11 @@ import { CJImageLookCollectionView } from '../../CJBaseUIKit/CJBaseUIKit';
 import React from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
-import CJActionLoadingImage  from './image/CJActionLoadingImage';
+import CJActionLoadingImage  from '../../image/CJActionLoadingImage';
 
 // import {CJImageUploadType} from "../image/utils/CJImageUtil";
 
-import BaseCollectionView from './BaseCollectionView';
-import CJCollectionCell from "./CJCollectionCell";
+import BaseCollectionView from '../Base/BaseCollectionView';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
@@ -60,7 +59,7 @@ export var CJImageUploadType = {
     Failure: 4,     /**< 上传失败 */
 };
 
-export default class CJImageActionCollectionView extends BaseCollectionView {
+export default class ImageActionCollectionView extends BaseCollectionView {
     static propTypes = {
         ...BaseCollectionView.propTypes,
 
@@ -229,33 +228,6 @@ export default class CJImageActionCollectionView extends BaseCollectionView {
         // let collectCellStyle = [defaultCollectCellStyle, richCollectCellStyle];  // TODO: 请确认并修正使用此方式时候，CJLoadingImage的布局
         let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
         // let collectCellStyle = defaultCollectCellStyle;
-
-        // item = {
-        //     title: "位置" + index,
-        //     imageSource: item.imageSource
-        // };
-        //
-        // return (
-        //     <CJCollectionCell
-        //         style={collectCellStyle}
-        //         key={index.toString()}
-        //
-        //         moduleModel={item}
-        //         defaultSource={this.props.imageDefaultSource}
-        //         imageBorderStyle={this.props.imageBorderStyle}
-        //
-        //         buttonIndex={index}
-        //         clickButtonHandle={this.clickButtonHandle}
-        //
-        //         onLoadComplete={(buttonIndex)=>{
-        //             this.onLoadComplete(buttonIndex)
-        //         }}
-        //
-        //         needLoadingAnimation={item.needLoadingAnimation}
-        //     />
-        // )
-
-
 
         return (
             <CJActionLoadingImage

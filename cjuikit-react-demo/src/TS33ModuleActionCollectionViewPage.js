@@ -1,7 +1,7 @@
 /**
- * TSModulesEntryListPage.js
+ * TS33ModuleActionCollectionViewPage.js
  *
- * @Description: TSModulesEntryListPage
+ * @Description: TS33ModuleActionCollectionViewPage
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -16,11 +16,11 @@ import React, { Component } from 'react';
 //     CJTSNavigationFactory,
 // } from 'cjrn-demo-base';
 
-// import { LKModulesEntryList } from '@luckin/react-native-theme-list';
+// import { ModuleActionCollectionView } from '@luckin/react-native-theme-list';
 
-import  LKModulesEntryList from './LKModulesEntryList';
+import  ModuleActionCollectionView from './ModuleActionCollectionView';
 
-export default class TSModulesEntryListPage extends Component {
+export default class TS33ModuleActionCollectionViewPage extends Component {
     // static navigationOptions = ({navigation}) => {
     //     return CJTSNavigationFactory.backPageNavigationOptions({navigation}, `模块功能入口列表`)
     // };
@@ -60,8 +60,8 @@ export default class TSModulesEntryListPage extends Component {
         ];
 
         return (
-            <LKModulesEntryList
-                navigation={this.props.navigation}
+            <ModuleActionCollectionView
+                // navigation={this.props.navigation}
                 moduleModels={moduleModels}
             />
         );

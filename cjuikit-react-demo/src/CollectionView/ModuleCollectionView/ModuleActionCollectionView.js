@@ -1,5 +1,5 @@
 /**
- * LKModulesEntryList.js
+ * ModuleActionCollectionView.js
  *
  * @Description: RN模块里常见的首页集合视图
  *
@@ -9,11 +9,11 @@
 import React, {Component} from 'react';
 // import { Alert, Dimensions } from 'react-native';
 import PropTypes from "prop-types";
-// import { CJCollectionView } from '@luckin/react-native-base-list';
+// import { ModuleCollectionView } from '@luckin/react-native-base-list';
 // import { LKRouteUtil } from "@luckin/react-native-theme-uikit";
-import CJCollectionView from "./CJCollectionView";
+import ModuleCollectionView from "./ModuleCollectionView";
 
-export default class LKModulesEntryList extends Component {
+export default class ModuleActionCollectionView extends Component {
     static propTypes = {
         moduleModels: PropTypes.array,
     }
@@ -54,7 +54,7 @@ export default class LKModulesEntryList extends Component {
         const listWidth = screenWidth;
 
         return (
-            <CJCollectionView
+            <ModuleCollectionView
                 // style={{paddingHorizontal: 40}}   //谨记：这边设置无效
                 listWidth={listWidth}
                 sectionInset={{top:15, left:15, bottom:15, right:15}}

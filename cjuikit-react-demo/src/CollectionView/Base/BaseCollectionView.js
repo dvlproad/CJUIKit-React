@@ -1,5 +1,5 @@
 /**
- * BaseCollectionView.jsw.js（本类只能用于继承，且子类只需实现 renderCollectionCell 方法）
+ * BaseCollectionView.js（本类只能用于继承，且子类只需实现 renderCollectionCell 方法）
  *
  * @Description: BaseCollectionView
  *
@@ -13,7 +13,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // import { FlatList, View, ViewPropTypes } from "react-native";
-import { ObjectCJHelper } from './Helper/ObjectCJHelper';
+import { ObjectCJHelper } from './ObjectCJHelper';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;

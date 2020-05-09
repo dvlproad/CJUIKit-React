@@ -1,5 +1,5 @@
 /**
- * LKImagesChooseList.js
+ * ImagesChooseList.js
  *
  * @Description: 图片上传列表
  *
@@ -8,7 +8,7 @@
  *
  */
 /*  使用示例：
-                <LKImagesChooseList
+                <ImagesChooseList
                     imageModels={[
                         {
                             imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
@@ -66,10 +66,10 @@ import React, {Component} from 'react';
 // import { Dimensions } from 'react-native';
 import PropTypes from "prop-types";
 // import { LuckinImageActionCollectionView } from '@luckin/react-native-base-list';
-import CJImageActionCollectionView from './CJImageActionCollectionView';
+import ImageActionCollectionView from './ImageActionCollectionView';
 
 
-export default class LKImagesChooseList extends Component {
+export default class ImagesChooseList extends Component {
     static propTypes = {
         scrollEnabled: PropTypes.bool,              // 是否可以滚动
 
@@ -114,7 +114,7 @@ export default class LKImagesChooseList extends Component {
         const listWidth = screenWidth;
 
         return (
-            <CJImageActionCollectionView
+            <ImageActionCollectionView
                 style={Object.assign({backgroundColor:'#FFFFFF'}, this.props.style)}   //谨记：这边设置无效
                 scrollEnabled={this.props.scrollEnabled}
                 listWidth={listWidth}

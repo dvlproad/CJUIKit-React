@@ -20,7 +20,7 @@ import React, {Component} from 'react';
 // import { LKToastUtil } from '@luckin/react-native-theme-overlay';
 //
 // import {
-//     LKImagesChooseList,
+//     ImagesChooseList,
 //     LKImageUploadType,
 // } from '@luckin/react-native-theme-list';
 //
@@ -29,8 +29,8 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import { CJImageUploadType as LKImageUploadType }  from './CJImageActionCollectionView'
-import LKImagesChooseList from './LKImagesChooseList';
+import { CJImageUploadType as LKImageUploadType }  from './ImageActionCollectionView'
+import ImagesChooseList from './ImagesChooseList';
 
 export const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
@@ -132,7 +132,7 @@ export default class TSImagesChooseListPage extends Component {
     render() {
         return (
             <div style={{ backgroundColor:"green"}}>
-                <LKImagesChooseList
+                <ImagesChooseList
                     imageModels={this.state.imageModels}
 
                     imageLoadedCountChange={this.imageLoadedCountChange}

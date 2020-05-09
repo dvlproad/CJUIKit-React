@@ -54,7 +54,7 @@ import PropTypes from "prop-types";
 
 export default class CJActionLoadingImage extends Component {
     static propTypes = {
-        //source: PropTypes.number.isRequired,    //图片
+        //src: PropTypes.number.isRequired,    //图片
         defaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
         // imageBorderStyle: stylePropTypes,   //图片边框样式
 
@@ -80,7 +80,7 @@ export default class CJActionLoadingImage extends Component {
     };
 
     static defaultProps = {
-        // source: require('./resources/imageDefault.png'),
+        // scr: require('./resources/imageDefault.png'),
         // defaultSource: require('./resources/imageDefault.png'),
         imageBorderStyle: {
             borderRadius: 6,
@@ -187,7 +187,7 @@ export default class CJActionLoadingImage extends Component {
                 >
                     <img
                         style={imageStyle}
-                        src={this.props.source}
+                        src={this.props.src}
                         // defaultSource={this.props.defaultSource}
                         // imageBorderStyle={this.props.imageBorderStyle}
                         // onLoadComplete={()=>{

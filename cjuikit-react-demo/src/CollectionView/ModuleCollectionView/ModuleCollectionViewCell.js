@@ -11,9 +11,9 @@
  */
 
 /*
-import CJCollectionCell  from '../../LuckinBaseUIKit/LuckinBaseUIKit';
+import ModuleCollectionViewCell  from '../../LuckinBaseUIKit/LuckinBaseUIKit';
 
-                <CJCollectionCell
+                <ModuleCollectionViewCell
                     style={{
                             width: 164, height: 108, backgroundColor:'red', borderRadius:10,
                             marginTop: 20,
@@ -62,7 +62,7 @@ import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
-export default class CJCollectionCell extends Component {
+export default class ModuleCollectionViewCell extends Component {
     static propTypes = {
         moduleModel: PropTypes.object,
         clickButtonHandle: PropTypes.func,

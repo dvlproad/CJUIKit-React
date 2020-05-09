@@ -1,45 +1,17 @@
-import React from 'react';
-import './App.css';
-import BaseCollectionView from "./BaseCollectionView";
-import CJCollectionCell from "./CJCollectionCell";
+import React, {Component} from 'react';
+import BaseCollectionView from "./CollectionView/Base/BaseCollectionView";
 
-function App() {
-    const moduleModels = [
-        {
-            title: "通知发货1",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-        {
-            title: "采购单查询2",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-        {
-            title: "通知发货3",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-        {
-            title: "采购单查询4",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-        {
-            title: "采购单查询5",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-        {
-            title: "采购单查询6",
-            imageSource: require('./resources/images/icon_await_check.png'),
-            nextPageName: "TSDescriptionListPage",
-        },
-    ];
+export default class TS2BaseCollectionViewPage extends Component {
+    render() {
+        const imageSources = [
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
+        ];
 
-
-
-    function BaeCollectionView() {
         // const screenWidth = Dimensions.get('window').width;
         const screenWidth = window.screen.width;
         const listWidth = screenWidth;
@@ -55,7 +27,7 @@ function App() {
                 widthHeightRatio={165/165}
                 minimumInteritemSpacing={15}
                 minimumLineSpacing={10}
-                dataModels={moduleModels}
+                dataModels={imageSources}
                 renderCollectionCell={(item, index, defaultCollectCellStyle)=>{
                     let richCollectCellStyle = {
                         backgroundColor: '#FFFFFF',
@@ -66,11 +38,11 @@ function App() {
 
                     //let collectCellStyle = { ...defaultCollectCellStyle, ...richCollectCellStyle}; //方法二
                     return (
-                        <CJCollectionCell
+                        <img
                             style={collectCellStyle}
                             key={index.toString()}
 
-                            moduleModel={item}
+                            src={item}
                         />
                     );
                 }}
@@ -78,12 +50,4 @@ function App() {
             />
         );
     }
-
-
-
-    return (
-        <BaeCollectionView />
-    )
 }
-
-export default App;
