@@ -45,7 +45,7 @@ import CJActionLoadingImage  from './image/CJActionLoadingImage';
 
 // import {CJImageUploadType} from "../image/utils/CJImageUtil";
 
-import CJBaseCollectionView from './CJBaseCollectionView';
+import BaseCollectionView from './BaseCollectionView';
 import CJCollectionCell from "./CJCollectionCell";
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
@@ -60,9 +60,9 @@ export var CJImageUploadType = {
     Failure: 4,     /**< 上传失败 */
 };
 
-export default class CJImageActionCollectionView extends CJBaseCollectionView {
+export default class CJImageActionCollectionView extends BaseCollectionView {
     static propTypes = {
-        ...CJBaseCollectionView.propTypes,
+        ...BaseCollectionView.propTypes,
 
         dataModels: PropTypes.array,
         imageDefaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
@@ -86,7 +86,7 @@ export default class CJImageActionCollectionView extends CJBaseCollectionView {
     };
 
     static defaultProps = {
-        ...CJBaseCollectionView.defaultProps,
+        ...BaseCollectionView.defaultProps,
 
         dataModels: [],
         listWidth: 0,

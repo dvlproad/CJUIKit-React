@@ -1,7 +1,7 @@
 /**
- * CJBaseCollectionView.jsw.js（本类只能用于继承，且子类只需实现 renderCollectionCell 方法）
+ * BaseCollectionView.jsw.js（本类只能用于继承，且子类只需实现 renderCollectionCell 方法）
  *
- * @Description: CJBaseCollectionView
+ * @Description: BaseCollectionView
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -18,7 +18,7 @@ import { ObjectCJHelper } from './Helper/ObjectCJHelper';
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
-export default class CJBaseCollectionView extends Component {
+export default class BaseCollectionView extends Component {
     static propTypes = {
         listWidth: PropTypes.number.isRequired,
         sectionInset: PropTypes.object,
@@ -33,6 +33,8 @@ export default class CJBaseCollectionView extends Component {
         forceBoxHorizontalIntervalEqualMinimumInteritemSpacing: PropTypes.bool,  //强制水平方向上box之间的间隔固定为最小间隔的值
 
         dataModels: PropTypes.array,
+
+        renderCollectionCell: PropTypes.func,       // 绘制cell，默认不用传
     };
 
     static defaultProps = {
@@ -49,6 +51,7 @@ export default class CJBaseCollectionView extends Component {
         forceBoxHorizontalIntervalEqualMinimumInteritemSpacing: false,
 
         dataModels: [],
+        renderCollectionCell:(item, index, defaultCollectCellStyle)=>{},
     };
 
     // 获取当前box与下一个box之间的水平间隔
@@ -78,7 +81,7 @@ export default class CJBaseCollectionView extends Component {
      * @returns {null}
      */
     renderCollectionCell(item, index, defaultCollectCellStyle) {
-        return null;
+        return this.props.renderCollectionCell(item, index, defaultCollectCellStyle);
     }
 
     /**

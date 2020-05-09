@@ -41,13 +41,13 @@ import React from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
 import CJCollectionCell  from './CJCollectionCell';
-import CJBaseCollectionView from './CJBaseCollectionView';
+import BaseCollectionView from './BaseCollectionView';
 // import ObjectCJHelper from './Helper/ObjectCJHelper';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
-export default class CJCollectionView extends CJBaseCollectionView {
+export default class CJCollectionView extends BaseCollectionView {
     static propTypes = {
         dataModels: PropTypes.array,
         imageDefaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),

@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
+// import App from './TS1StudyListPage';
+// import App from './TS2TestBaseCollectionViewPage';
+// import App from './TS3TestCollectionViewCellPage';
+// import App from './TS4CollectionViewPage';
+// import App from './TSModulesEntryListPage';
 import App from './TSImagesChooseListPage';
 import * as serviceWorker from './serviceWorker';
 

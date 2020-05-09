@@ -26,21 +26,43 @@ export default class TSModulesEntryListPage extends Component {
     // };
 
     render() {
+        const moduleModels = [
+            {
+                title: "通知发货1",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+            {
+                title: "采购单查询2",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+            {
+                title: "通知发货3",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+            {
+                title: "采购单查询4",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+            {
+                title: "采购单查询5",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+            {
+                title: "采购单查询6",
+                imageSource: require('./resources/images/icon_await_check.png'),
+                nextPageName: "TSDescriptionListPage",
+            },
+        ];
+
         return (
             <LKModulesEntryList
                 navigation={this.props.navigation}
-                moduleModels={ [
-                    {
-                        title: "通知发货",
-                        imageSource: require('./resources/images/icon_await_check.png'),
-                        nextPageName: "TSDescriptionListPage",
-                    },
-                    {
-                        title: "采购单查询",
-                        imageSource: require('./resources/images/icon_await_check.png'),
-                        nextPageName: "TSDescriptionListPage",
-                    },
-                ]}
+                moduleModels={moduleModels}
             />
         );
     }
