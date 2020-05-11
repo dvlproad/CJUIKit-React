@@ -126,6 +126,7 @@ export default class ImagesChooseList extends Component {
                 minimumLineSpacing={0}
                 forceBoxHorizontalIntervalEqualMinimumInteritemSpacing={true}
                 dataModels={this.props.imageModels}
+                // renderCollectionCell={(item, index, defaultCollectCellStyle)=>{}}
                 imageMaxCount={this.props.imageMaxCount}
 
                 imageLoadedCountChange={this.props.imageLoadedCountChange}

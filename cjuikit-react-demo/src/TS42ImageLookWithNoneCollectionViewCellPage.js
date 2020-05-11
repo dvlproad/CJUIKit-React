@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CJActionLoadingImage  from './image/CJActionLoadingImage';
+import ImageLook1WithNoneCollectionViewCell from "./TRYCollectionViewCell/ImageLook1WithNoneCollectionViewCell";
 
-export default class TS41ImageLookCollectionViewCellPage extends Component {
+export default class TS42ImageLookWithNoneCollectionViewCellPage extends Component {
     render() {
         const imageModels = [
             {
@@ -39,7 +39,7 @@ export default class TS41ImageLookCollectionViewCellPage extends Component {
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <img
+                            <ImageLook1WithNoneCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -55,7 +55,7 @@ export default class TS41ImageLookCollectionViewCellPage extends Component {
                                     alignItems: 'center'
                                 }}
 
-                                src={imageModel.imageSource}
+                                imageSource={imageModel.imageSource}
                                 // clickButtonHandle={this.props.clickButtonHandle}
                             />
                         )

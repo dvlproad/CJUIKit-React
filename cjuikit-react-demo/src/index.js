@@ -12,9 +12,14 @@ import './index.css';
 // import App from './TS32ModuleCollectionViewPage';
 // import App from './TS33ModuleActionCollectionViewPage';
 
-import App from './TS41ImageLookCollectionViewCellPage';
+// import App from './TS41ImageLookListPage';
+// import App from './TS42ImageLookWithNoneCollectionViewCellPage';
+// import App from './TS43ImageLookWithStateTextCollectionViewCellPage';
 
-// import App from './TS51ImageActionCollectionViewCellPage';
+// import App from "./TS43LoadingPage";
+// import App from './TS43ImageLookWithLoadingCollectionViewCellPage';
+
+import App from './TS51ImageActionWithNoneCollectionViewCellPage';
 
 // import App from './TSImagesChooseListPage';
 

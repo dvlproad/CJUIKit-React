@@ -52,7 +52,7 @@ import PropTypes from "prop-types";
 // const stylePropTypes = viewPropTypes.style;
 
 
-export default class CJActionLoadingImage extends Component {
+export default class ImageActionCollectionViewCell extends Component {
     static propTypes = {
         //src: PropTypes.number.isRequired,    //图片
         defaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),

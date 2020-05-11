@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CJActionLoadingImage  from './image/CJActionLoadingImage';
+import ImageLook2WithStateTextCollectionViewCell from "./TRYCollectionViewCell/ImageLook2WithStateTextCollectionViewCell";
 
-export default class TS51ImageActionCollectionViewCellPage extends Component {
+export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Component {
     render() {
         const imageModels = [
             {
@@ -39,7 +39,7 @@ export default class TS51ImageActionCollectionViewCellPage extends Component {
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <CJActionLoadingImage
+                            <ImageLook2WithStateTextCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -55,9 +55,11 @@ export default class TS51ImageActionCollectionViewCellPage extends Component {
                                     alignItems: 'center'
                                 }}
 
-                                src={imageModel.imageSource}
-                                isEditing={true}
+                                imageSource={imageModel.imageSource}
                                 // clickButtonHandle={this.props.clickButtonHandle}
+
+                                stateTextString={'70'+index}
+                                stateTextHeight={100}
                             />
                         )
                     })

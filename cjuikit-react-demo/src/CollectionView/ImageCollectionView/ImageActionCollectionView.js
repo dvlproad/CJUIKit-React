@@ -1,7 +1,7 @@
 /**
  * CJImageLookCollectionView.jsw.js
  *
- * @Description: 图片列表【不仅显示，且可增删】的集合视图（使用 CJActionLoadingImage）
+ * @Description: 图片列表【不仅显示，且可增删】的集合视图（使用 ImageAction1WithNoneCollectionViewCell）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -10,38 +10,10 @@
  * Copyright (c) dvlproad. All rights reserved.
  */
 
-/*
-import { CJImageLookCollectionView } from '../../CJBaseUIKit/CJBaseUIKit';
-
-                <CJImageLookCollectionView
-                    // style={{paddingHorizontal: 40}}   //谨记：这边设置无效
-                    listWidth={Dimensions.get('window').width}
-                    sectionInset={{top:15, left:15, bottom:15, right:15}}
-                    cellWidthFromPerRowMaxShowCount={2} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度
-                    // cellWidthFromFixedWidth={165}       // 通过cell的固定宽度来设置每个cell的宽度
-                    widthHeightRatio={164/108}
-                    minimumInteritemSpacing={10}
-                    minimumLineSpacing={10}
-                    dataModels={this.state.moduleModels}
-                    clickButtonHandle={(index)=>{
-                        LKToast.showMessage("点击浏览图片" + index);
-                    }}
-                    imageLoadedCountChange={(imageLoadedCount, isImageAllLoaded)=>{
-                        let message = '';
-                        if (isImageAllLoaded) {
-                            message = "所有图片加载完成，总张数为:" + imageLoadedCount;
-                        } else {
-                            message = "图片总进度加载中，当前完成张数:" + imageLoadedCount;
-                        }
-                        console.log(message);
-                    }}
-            />
- */
-
 import React from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
-import CJActionLoadingImage  from '../../image/CJActionLoadingImage';
+import ImageActionCollectionViewCell  from './ImageCollectionViewCell/ImageActionCollectionViewCell';
 
 // import {CJImageUploadType} from "../image/utils/CJImageUtil";
 
@@ -230,7 +202,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         // let collectCellStyle = defaultCollectCellStyle;
 
         return (
-            <CJActionLoadingImage
+            <ImageActionCollectionViewCell
                 style={collectCellStyle}
                 key={index.toString()}
 
