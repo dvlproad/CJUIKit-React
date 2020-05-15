@@ -29,8 +29,8 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import { CJImageUploadType as LKImageUploadType }  from './ImageActionCollectionView'
-import ImagesChooseList from './ImagesChooseList';
+import { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
+import ImagesChooseList from './CollectionView/ImageCollectionView/ImagesChooseList';
 
 export const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
@@ -49,19 +49,19 @@ export default class TSImagesChooseListPage extends Component {
     //         navigation.state.params.changeEditState();
     //     })
     // };
-
-    componentWillMount(){
-        // this.props.navigation.setParams({
-        //     changeEditState:this.changeEditState,
-        // })
-    }
-
-    changeEditState= ()=>{
-        let isEditing = !this.state.isEditing;
-        this.setState({
-            isEditing: isEditing,
-        })
-    }
+    //
+    // UNSAFE_componentWillMount() {
+    //     this.props.navigation.setParams({
+    //         changeEditState:this.changeEditState,
+    //     })
+    // }
+    //
+    // changeEditState= ()=>{
+    //     let isEditing = !this.state.isEditing;
+    //     this.setState({
+    //         isEditing: isEditing,
+    //     })
+    // }
 
 
     constructor(props) {
@@ -109,15 +109,21 @@ export default class TSImagesChooseListPage extends Component {
 
     imageLoadedCountChange= (imageLoadedCount, isImageAllLoaded)=>{
         //LKToastUtil.showMessage("完成加载的图片个数为:" + imageLoadedCount);
-        this.state.isImageAllLoaded = isImageAllLoaded;
+        // this.state.isImageAllLoaded = isImageAllLoaded;
+        this.setState({
+            isImageAllLoaded: isImageAllLoaded,
+        })
+
     }
 
 
     browseImageHandle=(index) => {
+        console.log("浏览图片" + index);
         // LKToastUtil.showMessage("浏览图片" + index);
     }
 
     addImageHandle=(index) => {
+        console.log("添加图片" + index);
         // LKToastUtil.showMessage("添加图片" + index);
         let imageModel = {imageSource: CJTSDefaultImages.networkImageCar};
 
@@ -141,6 +147,7 @@ export default class TSImagesChooseListPage extends Component {
                     browseImageHandle={this.browseImageHandle}
                     addImageHandle={this.addImageHandle}
                     deleteImageCompleteBlock={(imageModels)=>{
+                        console.log("删除图片");
                         this.setState({
                             imageModels: imageModels
                         })

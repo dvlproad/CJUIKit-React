@@ -1,3 +1,13 @@
+/**
+ * TS51ImageActionWithNoneCollectionViewCellPage.js
+ *
+ * @Description: 测试 ImageActionCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
+ *
+ * @author      ciyouzen
+ * @email       dvlproad@163.com
+ * @date        2020-05-16 01:22
+ *
+ */
 import React, {Component} from 'react';
 import ImageAction1WithNoneCollectionViewCell  from './TRYCollectionViewCell/ImageAction1WithNoneCollectionViewCell';
 
@@ -58,11 +68,11 @@ export default class TS51ImageActionWithNoneCollectionViewCellPage extends Compo
                                 imageSource={imageModel.imageSource}
                                 isEditing={true}
                                 clickButtonHandle={(buttonIndex)=>{
-                                    console.log("点击了图片");
+                                    console.log("点击了图片" + buttonIndex);
                                 }}
 
                                 deleteImageHandle={(buttonIndex)=>{
-                                    console.log("点击删除按钮");
+                                    console.log("点击删除按钮" + buttonIndex);
                                 }}
                             />
                         )

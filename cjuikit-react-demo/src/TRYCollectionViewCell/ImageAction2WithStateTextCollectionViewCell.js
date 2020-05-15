@@ -1,5 +1,5 @@
 /**
- * LuckinActionLoadingImage.js
+ * ImageAction2WithStateTextCollectionViewCell.js
  *
  * @Description: LuckinActionLoadingImage
  *
@@ -9,35 +9,6 @@
  *
  * Copyright (c) dvlproad. All rights reserved.
  */
-/*
-LuckinActionLoadingImage:图片控件(含加载动画和其他可操作事件) 的使用示例
-
-import LuckinActionLoadingImage  from '../../commonUI/image/LKActionLoadingImage';
-
-                <LuckinActionLoadingImage
-                    style={{
-                        width: 164, height: 108, backgroundColor:'red', borderRadius:10,
-                        marginTop: 20,
-                    }}
-                    imageBorderStyle={{
-                        borderRadius: 6,
-                        borderWidth: 3,
-                        borderColor: "cyan",
-                    }}
-                    source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562747201772&di=e5e02e2208aea4acdfd1fa92d4a10d42&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2FI9-_x2ze5vz07q7YorAc1Q%3D%3D%2F151715012463950227.jpg'}}
-
-                    isEditing={true}
-                    uploadType={LuckinImageUploadType.Uploading}
-                    uploadProgress={60}
-                    clickButtonHandle={()=>{
-                        LKToastUtil.showMessage('点击图片');
-                    }}
-                    deleteImageHandle={()=>{
-                        LKToastUtil.showMessage('点击删除');
-                    }}
-                />
- */
-
 import React, { Component } from 'react';
 // import { View, TouchableOpacity, ViewPropTypes } from 'react-native';
 // import {
@@ -45,16 +16,15 @@ import React, { Component } from 'react';
 //     LuckinImageButton,
 // } from '@luckin/react-native-base-uikit';
 
-import { LuckinImageUtil, LuckinImageUploadType } from "./utils/LuckinImageUtil";
 
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
 
-export default class ImageActionCollectionViewCell extends Component {
+export default class ImageAction2WithStateTextCollectionViewCell extends Component {
     static propTypes = {
-        //src: PropTypes.number.isRequired,    //图片
+        //imageSource: PropTypes.number.isRequired,    //图片
         defaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
         // imageBorderStyle: stylePropTypes,   //图片边框样式
 
@@ -69,18 +39,15 @@ export default class ImageActionCollectionViewCell extends Component {
 
         onLoadComplete: PropTypes.func, //图片加载结束的回调
 
-        uploadType: PropTypes.number,       //图片上传类型
-        uploadProgress: PropTypes.number,   //图片上传进度(值范围为0到100)
-        // 是否需要加载动画(默认需要)
-        // 有以下体验不友好的情况需要特殊处理：即从本地上传的图片会得到网络图片地址，
-        // 如果此时把网络图片的地址更新上去，会导致再显示菊花loading，不大友好，需要设置本属性为false
-        needLoadingAnimation: PropTypes.bool,
 
         changeShowDebugMessage: PropTypes.bool,    //将提示信息改为显示调试的信息，此选项默认false
+
+        stateTextHeight: PropTypes.number,  // 图片上的状态文本视图所占的高度
+        stateTextString: PropTypes.string,   // 图片上的状态文本
     };
 
     static defaultProps = {
-        // scr: require('./resources/imageDefault.png'),
+        // imageSource: require('./resources/imageDefault.png'),
         // defaultSource: require('./resources/imageDefault.png'),
         imageBorderStyle: {
             borderRadius: 6,
@@ -99,11 +66,10 @@ export default class ImageActionCollectionViewCell extends Component {
 
         onLoadComplete: (buttonIndex)=>{},
 
-        uploadType: LuckinImageUploadType.NotNeed,
-        uploadProgress: 0,
-        needLoadingAnimation: true,
-
         changeShowDebugMessage: false,
+
+        stateTextHeight: 0,
+        stateTextString: null,
     };
 
     constructor(props) {
@@ -160,16 +126,36 @@ export default class ImageActionCollectionViewCell extends Component {
             marginRight:imageTopRightPadding
         };
 
-        let stateTextHeight = imageHeight;
-        if (this.props.uploadType === LuckinImageUploadType.Success) {
-            stateTextHeight = 0;
-        }
-        //let stateTextHeight = imageHeight * (1-this.props.uploadProgress/100);
 
-        let stateTextString = LuckinImageUtil.getFormalImageStateText(this.props.uploadType, this.props.uploadProgress);
-        if (this.props.changeShowDebugMessage) {
-            stateTextString = LuckinImageUtil.getDebugImageStateText(this.props.buttonIndex, this.state.isNetworkImage);
-        }
+        let stateTextString = this.props.stateTextString;
+
+        let stateBGColor = stateTextString && stateTextString.length > 0 ? 'rgba(0,0,0,0.6)' : null;
+
+        let stateTextWidth = imageWidth;
+        let stateTextHeight = this.props.stateTextHeight;
+        let stateComponentStyle = Object.assign(
+            {
+                // display: 'inline-block',
+                // display: 'flex',
+                backgroundColor:stateBGColor,
+                position:'absolute',
+                width:stateTextWidth,
+                height:stateTextHeight
+            },
+            this.props.imageBorderStyle
+        );
+
+        let stateTextStyle ={flex: 1, textAlign: 'center', fontSize: 17, color: '#FFFFFF'};
+        stateTextStyle = Object.assign(stateTextStyle, {lineHeight: stateTextHeight+'px'});
+        let stateComponent = (
+            <div style={stateComponentStyle}>
+                <div
+                    style={stateTextStyle}
+                >
+                    {stateTextString}
+                </div>
+            </div>
+        );
 
         return (
             <div
@@ -187,18 +173,10 @@ export default class ImageActionCollectionViewCell extends Component {
                 >
                     <img
                         style={imageStyle}
-                        src={this.props.src}
+                        src={this.props.imageSource}
                         alt={'alt'}
-                        // defaultSource={this.props.defaultSource}
-                        // imageBorderStyle={this.props.imageBorderStyle}
-                        // onLoadComplete={()=>{
-                        //     this.props.onLoadComplete(this.props.buttonIndex);
-                        // }}
-                        // stateTextString={stateTextString}
-                        // stateTextHeight={stateTextHeight}
-                        // needLoadingAnimation={this.props.needLoadingAnimation}
-                        // changeShowDebugMessage={this.props.changeShowDebugMessage}
                     />
+                    {stateComponent}
                     {deleteImageButton}
                 </div>
             </div>

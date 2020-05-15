@@ -1,3 +1,13 @@
+/**
+ * TS43ImageLookWithStateTextCollectionViewCellPage.js
+ *
+ * @Description: 测试 ImageLookCollectionViewCell（3含StateText，附情况1都不含None，2含Loading，3含SateText）
+ *
+ * @author      ciyouzen
+ * @email       dvlproad@163.com
+ * @date        2020-05-16 01:27
+ *
+ */
 import React, {Component} from 'react';
 import ImageLook2WithStateTextCollectionViewCell from "./TRYCollectionViewCell/ImageLook2WithStateTextCollectionViewCell";
 

@@ -90,7 +90,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         isEditing: false,
         hasAddIconWhenEditing: true,
         imageMaxCount: 10000,
-        addImageSource: require('./resources/addImage_common@2x.png'),
+        addImageSource: require('../../resources/addImage_common@2x.png'),
     };
 
     constructor(props) {
@@ -108,7 +108,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
 
 
     componentDidMount() {
-        let isImageAllLoaded = this.props.dataModels.length == 0;
+        let isImageAllLoaded = this.props.dataModels.length === 0;
         if (isImageAllLoaded) {
             this.props.imageLoadedCountChange(this.state.imageLoadedCount, isImageAllLoaded);
         }
@@ -130,7 +130,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
 
 
     isAddIcon = (index)=> {
-        if (index == this.state.addIconCurIndex) {
+        if (index === this.state.addIconCurIndex) {
             return true;
         } else {
             return false;
@@ -138,7 +138,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
     }
 
     clickButtonHandle = (index)=> {
-        if (index == this.state.addIconCurIndex) {
+        if (index === this.state.addIconCurIndex) {
             this.props.addImageHandle(index);
         } else {
             this.props.browseImageHandle(index);
@@ -206,7 +206,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
                 style={collectCellStyle}
                 key={index.toString()}
 
-                source={item.imageSource}
+                src={item.imageSource}
                 defaultSource={this.props.imageDefaultSource}
                 imageBorderStyle={this.getImageBorderStyle(index)}
 

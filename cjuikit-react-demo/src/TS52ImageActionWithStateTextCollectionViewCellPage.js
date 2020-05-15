@@ -1,17 +1,17 @@
 /**
- * TS42ImageLookWithNoneCollectionViewCellPage.js
+ * TS52ImageActionWithStateTextCollectionViewCellPage.js
  *
- * @Description: 测试 ImageLookCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: 测试 ImageActionCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:24
+ * @date        2020-05-16 01:22
  *
  */
 import React, {Component} from 'react';
-import ImageLook1WithNoneCollectionViewCell from "./TRYCollectionViewCell/ImageLook1WithNoneCollectionViewCell";
+import ImageAction2WithStateTextCollectionViewCell  from './TRYCollectionViewCell/ImageAction2WithStateTextCollectionViewCell';
 
-export default class TS42ImageLookWithNoneCollectionViewCellPage extends Component {
+export default class TS52ImageActionWithStateTextCollectionViewCellPage extends Component {
     render() {
         const imageModels = [
             {
@@ -49,7 +49,7 @@ export default class TS42ImageLookWithNoneCollectionViewCellPage extends Compone
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <ImageLook1WithNoneCollectionViewCell
+                            <ImageAction2WithStateTextCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -66,7 +66,17 @@ export default class TS42ImageLookWithNoneCollectionViewCellPage extends Compone
                                 }}
 
                                 imageSource={imageModel.imageSource}
-                                // clickButtonHandle={this.props.clickButtonHandle}
+                                isEditing={true}
+                                clickButtonHandle={(buttonIndex)=>{
+                                    console.log("点击了图片" + buttonIndex);
+                                }}
+
+                                deleteImageHandle={(buttonIndex)=>{
+                                    console.log("点击删除按钮" + buttonIndex);
+                                }}
+
+                                stateTextString={'70'+index}
+                                stateTextHeight={100}
                             />
                         )
                     })

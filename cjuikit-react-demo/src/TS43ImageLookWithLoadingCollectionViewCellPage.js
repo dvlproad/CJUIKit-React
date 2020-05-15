@@ -1,3 +1,13 @@
+/**
+ * TS43ImageLookWithLoadingCollectionViewCellPage.js
+ *
+ * @Description: 测试 ImageLookCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
+ *
+ * @author      ciyouzen
+ * @email       dvlproad@163.com
+ * @date        2020-05-16 01:25
+ *
+ */
 import React, {Component} from 'react';
 import ImageLook2WithLoadingCollectionViewCell from "./TRYCollectionViewCell/ImageLook2WithLoadingCollectionViewCell";
 
