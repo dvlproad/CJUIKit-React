@@ -67,9 +67,6 @@ export default class TS43ImageLookWithLoadingCollectionViewCellPage extends Comp
 
                                 imageSource={imageModel.imageSource}
                                 // clickButtonHandle={this.props.clickButtonHandle}
-
-                                stateTextString={'70'+index}
-                                stateTextHeight={100}
                             />
                         )
                     })

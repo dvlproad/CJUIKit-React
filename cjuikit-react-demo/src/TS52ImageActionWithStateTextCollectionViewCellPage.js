@@ -76,7 +76,7 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                     console.log("点击删除按钮" + buttonIndex);
                                 }}
 
-                                stateTextString={'70'+index}
+                                stateTextString={'52'+index}
                                 stateTextHeight={100}
                             />
                         )

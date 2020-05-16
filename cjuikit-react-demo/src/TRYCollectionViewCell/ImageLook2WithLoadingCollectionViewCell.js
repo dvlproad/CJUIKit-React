@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { ObjectCJHelper } from './ObjectCJHelper';
-import { ActivityIndicator }  from 'antd-mobile';
+import { ObjectCJHelper } from './ObjectCJHelper'
+import ActivityIndicator from "../ActivityIndicator/ActivityIndicator";
+import 'antd-mobile/dist/antd-mobile.css'
 
 /// 图片加载状态
 var LuckinImageLoadStatus = {
@@ -159,9 +160,9 @@ export default class ImageLook2WithLoadingCollectionViewCell extends Component {
         const imageHeight = selfStyle.height;
 
         if (selfStyle.width > 0 && selfStyle.height > 0) {
-
+            selfStyle = Object.assign({position: 'relative'}, selfStyle);
         } else {
-            selfStyle = Object.assign({flex:1}, selfStyle);
+            selfStyle = Object.assign({flex:1, position: 'relative'}, selfStyle);
         }
 
         let showLoadingHUD = false;
@@ -205,12 +206,13 @@ export default class ImageLook2WithLoadingCollectionViewCell extends Component {
 
                 <ActivityIndicator
                     style={{
+                        display: 'flex', flex:1, backgroundColor:'rgba(0,0,0,0.6)',
                         position:'absolute',
-                        width:imageWidth,
-                        height:imageHeight,
+                        top: 0,
+                        left: 0,
+                        bottom: 0,
+                        right: 0,
                     }}
-                    size="large"
-                    color="#172991"
                     animating={showLoadingHUD}
                 />
             </div>

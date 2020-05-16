@@ -10,16 +10,11 @@
  * Copyright (c) dvlproad. All rights reserved.
  */
 import React, { Component } from 'react';
-// import { View, TouchableOpacity, ViewPropTypes } from 'react-native';
-// import {
-//     LuckinLoadingImage,
-//     LuckinImageButton,
-// } from '@luckin/react-native-base-uikit';
-
-
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
+import CellStateText from "./CellStateText";
+import CellDeleteButton from "./CellDeleteButton";
 
 
 export default class ImageAction2WithStateTextCollectionViewCell extends Component {
@@ -39,15 +34,12 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         onLoadComplete: PropTypes.func, //图片加载结束的回调
 
-
-        changeShowDebugMessage: PropTypes.bool,    //将提示信息改为显示调试的信息，此选项默认false
-
         stateTextHeight: PropTypes.number,  // 图片上的状态文本视图所占的高度
         stateTextString: PropTypes.string,   // 图片上的状态文本
     };
 
     static defaultProps = {
-        // imageSource: require('./resources/imageDefault.png'),
+        imageSource: require('./resources/imageDefault.png'),
         // defaultSource: require('./resources/imageDefault.png'),
         imageBorderStyle: {
             borderRadius: 6,
@@ -65,8 +57,6 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
         isAddIcon: false,
 
         onLoadComplete: (buttonIndex)=>{},
-
-        changeShowDebugMessage: false,
 
         stateTextHeight: 0,
         stateTextString: null,
@@ -87,11 +77,9 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         const boxWidth = this.props.style.width;
         const boxHeight = this.props.style.height;
-        let testBoxStyle = this.props.changeShowDebugMessage ? {backgroundColor: 'red'} : null;
         let boxStyle = Object.assign(
             {width:boxWidth},
             style,
-            testBoxStyle
         );
 
         // 图片删除按钮
@@ -104,7 +92,7 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
         };
         let deleteImageButton = shouldShowDeleteButton ?
             (
-                <LuckinImageDeleteButton
+                <CellDeleteButton
                     style={deleteButtonStyle}
                     onPress={()=> {
                         this.props.deleteImageHandle(this.props.buttonIndex);
@@ -126,39 +114,6 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
             marginRight:imageTopRightPadding
         };
 
-
-        let stateTextString = this.props.stateTextString;
-
-        let stateBGColor = stateTextString && stateTextString.length > 0 ? 'rgba(0,0,0,0.6)' : null;
-
-        let stateTextWidth = imageWidth;
-        let stateTextHeight = this.props.stateTextHeight;
-        let stateComponentStyle = Object.assign(
-            {
-                // display: 'inline-block',
-                // display: 'flex',
-                backgroundColor:stateBGColor,
-                position:'absolute',
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-            },
-            this.props.imageBorderStyle
-        );
-
-        let stateTextStyle ={flex: 1, textAlign: 'center', fontSize: 17, color: '#FFFFFF'};
-        stateTextStyle = Object.assign(stateTextStyle, {lineHeight: stateTextHeight+'px'});
-        let stateComponent = (
-            <div style={stateComponentStyle}>
-                <div
-                    style={stateTextStyle}
-                >
-                    {stateTextString}
-                </div>
-            </div>
-        );
-
         return (
             <div
                 style={boxStyle}
@@ -178,36 +133,17 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
                         src={this.props.imageSource}
                         alt={'alt'}
                     />
-                    {stateComponent}
+                    <CellStateText
+                        style={Object.assign(
+                            {position:'absolute', top: 0, left: 0, bottom: 0, right: 0},
+                            this.props.imageBorderStyle
+                        )}
+                        stateTextString={this.props.stateTextString}
+                        stateTextHeight={this.props.stateTextHeight}
+                    />
                     {deleteImageButton}
                 </div>
             </div>
         );
-    }
-}
-
-// 删除的图片按钮
-class LuckinImageDeleteButton extends Component {
-    static propTypes = {
-        onPress: PropTypes.func
-    };
-
-    static defaultProps = {
-        onPress: null,
-    };
-
-
-    render() {
-        return (
-            <img
-                style={this.props.style}
-                src={require('./resources/imageDelete_blue.png')}
-                alt={'alt'}
-                onClick={(event) => {
-                    event.stopPropagation();
-                    this.props.onPress()
-                }}
-            />
-        )
     }
 }

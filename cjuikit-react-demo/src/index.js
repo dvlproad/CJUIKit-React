@@ -12,15 +12,17 @@ import './index.css';
 // import App from './TS32ModuleCollectionViewPage';
 // import App from './TS33ModuleActionCollectionViewPage';
 
+
+// import App from "./TS2StudyActivityIndicatorPage";
 // import App from './TS41ImageLookListPage';
 // import App from './TS42ImageLookWithNoneCollectionViewCellPage';
+import App from './TS43ImageLookWithLoadingCollectionViewCellPage';
 // import App from './TS43ImageLookWithStateTextCollectionViewCellPage';
 
 // import App from "./TS43LoadingPage";
-// import App from './TS43ImageLookWithLoadingCollectionViewCellPage';
 
 // import App from './TS51ImageActionWithNoneCollectionViewCellPage';
-import App from './TS52ImageActionWithStateTextCollectionViewCellPage';
+// import App from './TS52ImageActionWithStateTextCollectionViewCellPage';
 
 // import App from './TSImagesChooseListPage';
 
