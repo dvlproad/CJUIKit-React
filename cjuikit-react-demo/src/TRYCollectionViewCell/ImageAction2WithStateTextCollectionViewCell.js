@@ -139,8 +139,10 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
                 // display: 'flex',
                 backgroundColor:stateBGColor,
                 position:'absolute',
-                width:stateTextWidth,
-                height:stateTextHeight
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
             },
             this.props.imageBorderStyle
         );
@@ -201,7 +203,10 @@ class LuckinImageDeleteButton extends Component {
                 style={this.props.style}
                 src={require('./resources/imageDelete_blue.png')}
                 alt={'alt'}
-                onClick={this.props.onPress}
+                onClick={(event) => {
+                    event.stopPropagation();
+                    this.props.onPress()
+                }}
             />
         )
     }

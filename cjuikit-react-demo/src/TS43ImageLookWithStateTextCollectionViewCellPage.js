@@ -62,7 +62,8 @@ export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Co
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    position: 'relative',
                                 }}
 
                                 imageSource={imageModel.imageSource}

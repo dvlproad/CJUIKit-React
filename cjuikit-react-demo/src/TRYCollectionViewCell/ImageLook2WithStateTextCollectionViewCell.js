@@ -74,8 +74,10 @@ export default class ImageLook2WithStateTextCollectionViewCell extends Component
                 // display: 'flex',
                 backgroundColor:stateBGColor,
                 position:'absolute',
-                width:stateTextWidth,
-                height:stateTextHeight
+                top: 0,
+                left: 0,
+                bottom: 0,
+                right: 0,
             },
             this.props.imageBorderStyle
         );
