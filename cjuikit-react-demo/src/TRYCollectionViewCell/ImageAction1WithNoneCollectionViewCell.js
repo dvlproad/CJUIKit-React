@@ -1,7 +1,7 @@
 /**
  * LuckinActionLoadingImage.js
  *
- * @Description: LuckinActionLoadingImage
+ * @Description: ImageActionCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com

@@ -1,7 +1,7 @@
 /**
- * TS52ImageActionWithStateTextCollectionViewCellPage.js
+ * TS52ImageActionWithLoadingCollectionViewCellPage.js
  *
- * @Description: 测试 ImageActionCollectionViewCell（3含SateText，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: 测试 ImageActionCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -9,9 +9,9 @@
  *
  */
 import React, {Component} from 'react';
-import ImageAction2WithStateTextCollectionViewCell  from './TRYCollectionViewCell/ImageAction2WithStateTextCollectionViewCell';
+import ImageAction2WithLoadingCollectionViewCell  from './TRYCollectionViewCell/ImageAction2WithLoadingCollectionViewCell';
 
-export default class TS52ImageActionWithStateTextCollectionViewCellPage extends Component {
+export default class TS52ImageActionWithLoadingCollectionViewCellPage extends Component {
     render() {
         const imageModels = [
             {
@@ -49,7 +49,7 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <ImageAction2WithStateTextCollectionViewCell
+                            <ImageAction2WithLoadingCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -75,10 +75,6 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                 deleteImageHandle={(buttonIndex)=>{
                                     console.log("点击删除按钮" + buttonIndex);
                                 }}
-
-                                stateTextString={'52'+index}
-                                // stateTextHeightPercent={"100%"}
-                                stateTextHeightPercent={Math.random()*100}
                             />
                         )
                     })

@@ -1,3 +1,14 @@
+/**
+ * ImageLook1WithNoneCollectionViewCell.js
+ *
+ * @Description: ImageLookCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
+ *
+ * @author      ciyouzen
+ * @email       dvlproad@163.com
+ * @date        2019-06-07 19:54:15
+ *
+ * Copyright (c) dvlproad. All rights reserved.
+ */
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { ObjectCJHelper } from './ObjectCJHelper'
@@ -208,14 +219,9 @@ export default class ImageLook2WithLoadingCollectionViewCell extends Component {
                 />
 
                 <CellActivityIndicatorOverlay
-                    style={{
-                        display: 'flex', flex:1, backgroundColor:'rgba(0,0,0,0.6)',
-                        position:'absolute',
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                    }}
+                    style={
+                        {position:'absolute', top: 0, left: 0, bottom: 0, right: 0,}
+                    }
                     hudAnimating={showLoadingHUD}
                 />
             </div>

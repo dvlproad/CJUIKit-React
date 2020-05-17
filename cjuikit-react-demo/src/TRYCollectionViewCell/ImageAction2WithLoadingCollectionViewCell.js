@@ -1,7 +1,7 @@
 /**
- * ImageAction2WithStateTextCollectionViewCell.js
+ * ImageAction2WithLoadingCollectionViewCell.js
  *
- * @Description: ImageActionCollectionViewCell（3含SateText，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: ImageActionCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -13,11 +13,11 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
-import CellStateTextOverlay from "./CellStateTextOverlay";
+import CellActivityIndicatorOverlay from "./CellActivityIndicatorOverlay";
 import CellDeleteButton from "./CellDeleteButton";
 
 
-export default class ImageAction2WithStateTextCollectionViewCell extends Component {
+export default class ImageAction2WithLoadingCollectionViewCell extends Component {
     static propTypes = {
         //imageSource: PropTypes.number.isRequired,    //图片
         defaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
@@ -34,8 +34,6 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         onLoadComplete: PropTypes.func, //图片加载结束的回调
 
-        stateTextHeightPercent: PropTypes.number,  // 图片上的状态文本视图所占的高度百分比
-        stateTextString: PropTypes.string,   // 图片上的状态文本
     };
 
     static defaultProps = {
@@ -58,8 +56,6 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         onLoadComplete: (buttonIndex)=>{},
 
-        stateTextHeightPercent: 0,
-        stateTextString: null,
     };
 
     constructor(props) {
@@ -114,6 +110,9 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
             marginRight:imageTopRightPadding
         };
 
+        let showLoadingHUD = false;
+        showLoadingHUD = true;
+
         return (
             <div
                 style={boxStyle}
@@ -133,13 +132,12 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
                         src={this.props.imageSource}
                         alt={'alt'}
                     />
-                    <CellStateTextOverlay
+                    <CellActivityIndicatorOverlay
                         style={Object.assign(
-                            {position:'absolute', top: 0, left: 0, bottom: 0, right: 0},
+                            {position:'absolute', top: imageTopRightPadding, left: 0, bottom: 0, right: imageTopRightPadding},
                             this.props.imageBorderStyle
                         )}
-                        stateTextString={this.props.stateTextString}
-                        stateTextHeightPercent={this.props.stateTextHeightPercent}
+                        hudAnimating={showLoadingHUD}
                     />
                     {deleteImageButton}
                 </div>

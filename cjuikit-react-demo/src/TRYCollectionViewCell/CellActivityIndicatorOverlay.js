@@ -26,7 +26,7 @@ export default class CellActivityIndicatorOverlay extends Component {
             <div
                 style={Object.assign(
                     {
-                        display: 'flex', flex:1,
+                        display: 'flex', flex:1, backgroundColor:'rgba(0,0,0,0.6)',
                         flexDirection:"column", justifyContent:"center", alignItems:"center",
                     },
                     this.props.style)}

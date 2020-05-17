@@ -1,7 +1,7 @@
 /**
  * ImageLook1WithNoneCollectionViewCell.js
  *
- * @Description: 图片控件(只含加载动画,但不含其他可操作事件)
+ * @Description: ImageLookCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
