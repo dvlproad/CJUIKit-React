@@ -70,7 +70,8 @@ export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Co
                                 // clickButtonHandle={this.props.clickButtonHandle}
 
                                 stateTextString={'70'+index}
-                                stateTextHeight={100}
+                                // stateTextHeightPercent={"100%"}
+                                stateTextHeightPercent={Math.random()*100}
                             />
                         )
                     })

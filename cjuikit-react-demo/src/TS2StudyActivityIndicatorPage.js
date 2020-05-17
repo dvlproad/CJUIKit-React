@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ActivityIndicator, WingBlank, WhiteSpace, Button } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 
-import CJActivityIndicator from "./ActivityIndicator/ActivityIndicator";
+import CJActivityIndicator from "./TRYCollectionViewCell/CellActivityIndicatorOverlay";
 
 export default class TS2StudyActivityIndicatorPage extends Component {
     constructor(props) {

@@ -77,7 +77,8 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                 }}
 
                                 stateTextString={'52'+index}
-                                stateTextHeight={100}
+                                // stateTextHeightPercent={"100%"}
+                                stateTextHeightPercent={Math.random()*100}
                             />
                         )
                     })

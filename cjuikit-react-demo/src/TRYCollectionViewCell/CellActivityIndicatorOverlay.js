@@ -3,15 +3,15 @@ import PropTypes from "prop-types";
 import { ActivityIndicator } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 
-export default class CJActivityIndicator extends Component {
+export default class CellActivityIndicatorOverlay extends Component {
     static propTypes = {
-        animating: PropTypes.bool,
-        text: PropTypes.string,
+        hudAnimating: PropTypes.bool,
+        hudText: PropTypes.string,
     };
 
     static defaultProps = {
-        animating: true,
-        text: null,
+        hudAnimating: true,
+        hudText: null,
     };
 
     constructor(props) {
@@ -25,12 +25,15 @@ export default class CJActivityIndicator extends Component {
         return (
             <div
                 style={Object.assign(
-                    {display: 'flex', flex:1,  flexDirection:"column", justifyContent:"center", alignItems:"center"},
+                    {
+                        display: 'flex', flex:1,
+                        flexDirection:"column", justifyContent:"center", alignItems:"center",
+                    },
                     this.props.style)}
             >
                 <ActivityIndicator
-                    text={this.props.text}
-                    animating={this.props.animating}
+                    text={this.props.hudText}
+                    animating={this.props.hudAnimating}
                 />
             </div>
         );

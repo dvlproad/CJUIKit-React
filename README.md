@@ -5,6 +5,30 @@ CJUIKit React
 
 
 
+## 布局相关
+
+* [css绝对定位居中](https://www.cnblogs.com/qxp140605/p/11793774.html)
+
+
+
+随机数：
+
+```
+0~100的随机字符串
+Math.random()*100
+
+0~100的随机数字
+parseInt(Math.random()*100)
+
+数字转字符串
+n.toString()
+```
+
+
+
+
+
+
 参考文章：
 
 * [eslint解决方案整理](https://blog.csdn.net/zcfzfc123456789/article/details/87899298)

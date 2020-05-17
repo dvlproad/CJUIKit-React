@@ -13,6 +13,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { ObjectCJHelper } from './ObjectCJHelper';
+import CellStateTextOverlay from "./CellStateTextOverlay";
 
 
 export default class ImageLook2WithStateTextCollectionViewCell extends Component {
@@ -20,7 +21,7 @@ export default class ImageLook2WithStateTextCollectionViewCell extends Component
         // imageSource: PropTypes.number.isRequired,    //图片
         // imageBorderStyle: stylePropTypes,   //图片边框样式
 
-        stateTextHeight: PropTypes.number,  // 图片上的状态文本视图所占的高度
+        stateTextHeightPercent: PropTypes.number,  // 图片上的状态文本视图所占的高度的百分比
         stateTextString: PropTypes.string,   // 图片上的状态文本
     };
 
@@ -62,39 +63,6 @@ export default class ImageLook2WithStateTextCollectionViewCell extends Component
         }
 
 
-        let stateTextString = this.props.stateTextString;
-
-        let stateBGColor = stateTextString && stateTextString.length > 0 ? 'rgba(0,0,0,0.6)' : null;
-
-        let stateTextWidth = imageWidth;
-        let stateTextHeight = this.props.stateTextHeight;
-        let stateComponentStyle = Object.assign(
-            {
-                // display: 'inline-block',
-                // display: 'flex',
-                backgroundColor:stateBGColor,
-                position:'absolute',
-                top: 0,
-                left: 0,
-                bottom: 0,
-                right: 0,
-            },
-            this.props.imageBorderStyle
-        );
-
-        let stateTextStyle ={flex: 1, textAlign: 'center', fontSize: 17, color: '#FFFFFF'};
-        stateTextStyle = Object.assign(stateTextStyle, {lineHeight: stateTextHeight+'px'});
-        let stateComponent = (
-            <div style={stateComponentStyle}>
-                <div
-                    style={stateTextStyle}
-                >
-                    {stateTextString}
-                </div>
-            </div>
-        );
-
-
         let imageStyle = Object.assign(
             {
                 width: imageWidth,
@@ -118,8 +86,14 @@ export default class ImageLook2WithStateTextCollectionViewCell extends Component
                     // resizeMode={'stretch'}
                     alt={'alt'}
                 />
-
-                {stateComponent}
+                <CellStateTextOverlay
+                    style={Object.assign(
+                        {position:'absolute', top: 0, left: 0, bottom: 0, right: 0},
+                        this.props.imageBorderStyle
+                    )}
+                    stateTextString={this.props.stateTextString}
+                    stateTextHeightPercent={this.props.stateTextHeightPercent}
+                />
             </div>
         );
     }

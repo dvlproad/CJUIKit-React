@@ -13,7 +13,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
-import CellStateText from "./CellStateText";
+import CellStateTextOverlay from "./CellStateTextOverlay";
 import CellDeleteButton from "./CellDeleteButton";
 
 
@@ -34,7 +34,7 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         onLoadComplete: PropTypes.func, //图片加载结束的回调
 
-        stateTextHeight: PropTypes.number,  // 图片上的状态文本视图所占的高度
+        stateTextHeightPercent: PropTypes.number,  // 图片上的状态文本视图所占的高度百分比
         stateTextString: PropTypes.string,   // 图片上的状态文本
     };
 
@@ -58,7 +58,7 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
 
         onLoadComplete: (buttonIndex)=>{},
 
-        stateTextHeight: 0,
+        stateTextHeightPercent: 0,
         stateTextString: null,
     };
 
@@ -133,13 +133,13 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
                         src={this.props.imageSource}
                         alt={'alt'}
                     />
-                    <CellStateText
+                    <CellStateTextOverlay
                         style={Object.assign(
                             {position:'absolute', top: 0, left: 0, bottom: 0, right: 0},
                             this.props.imageBorderStyle
                         )}
                         stateTextString={this.props.stateTextString}
-                        stateTextHeight={this.props.stateTextHeight}
+                        stateTextHeightPercent={this.props.stateTextHeightPercent}
                     />
                     {deleteImageButton}
                 </div>
