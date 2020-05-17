@@ -19,12 +19,11 @@ import './index.css';
 // import App from './TS43ImageLookWithLoadingCollectionViewCellPage';
 // import App from './TS43ImageLookWithStateTextCollectionViewCellPage';
 
-// import App from "./TS43LoadingPage";
-
 // import App from './TS51ImageActionWithNoneCollectionViewCellPage';
-import App from './TS52ImageActionWithLoadingCollectionViewCellPage';
+// import App from './TS52ImageActionWithLoadingCollectionViewCellPage';
 // import App from './TS52ImageActionWithStateTextCollectionViewCellPage';
 
+import App from './TSImageActionCollectionViewPage';
 // import App from './TSImagesChooseListPage';
 
 import * as serviceWorker from './serviceWorker';

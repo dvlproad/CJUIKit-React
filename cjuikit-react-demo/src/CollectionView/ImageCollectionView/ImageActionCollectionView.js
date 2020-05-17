@@ -1,7 +1,8 @@
 /**
  * CJImageLookCollectionView.jsw.js
  *
- * @Description: 图片列表【不仅显示，且可增删】的集合视图（使用 ImageAction1WithNoneCollectionViewCell）
+ * @Description: 图片列表【不仅显示，且可增删】的集合视图
+ *               ImageActionCollectionView（1样式纯自定义，，附情况1样式纯自定义，2含样式已封装成APP风格）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com

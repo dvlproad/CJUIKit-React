@@ -2,6 +2,7 @@
  * ImagesChooseList.js
  *
  * @Description: 图片上传列表
+ *               ImageActionCollectionView（2含样式已封装成APP风格，，附情况1样式纯自定义，2含样式已封装成APP风格）
  *
  * @author      chaoqian.li
  * @date        2019-11-14 15:07:19

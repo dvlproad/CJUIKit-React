@@ -1,7 +1,7 @@
 /**
- * TSImagesChooseListPage.js
+ * TSImageActionCollectionViewPage.js
  *
- * @Description: 测试 ImageActionCollectionView（2含样式已封装成APP风格，，附情况1样式纯自定义，2含样式已封装成APP风格）
+ * @Description: 测试 ImageActionCollectionView（1样式纯自定义，，附情况1样式纯自定义，2含样式已封装成APP风格）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -29,8 +29,7 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
-import ImagesChooseList from './CollectionView/ImageCollectionView/ImagesChooseList';
+import ImageActionCollectionView, { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
 
 export const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
@@ -42,7 +41,7 @@ export const CJTSDefaultImages = {
 };
 
 
-export default class TSImagesChooseListPage extends Component {
+export default class TSImageActionCollectionViewPage extends Component {
     // static navigationOptions = ({ navigation }) => {
     //     return CJTSNavigationFactory.backPageWithRightButtonNavigationOptions({ navigation }, `图片选择列表`, '测试状态切换', ()=>{
     //         // navigation.navigate('TSImagesChooseListPage', {});
@@ -70,6 +69,7 @@ export default class TSImagesChooseListPage extends Component {
         this.state = {
             isImageAllLoaded: false,    //图片是否全部加载完成，如果没有，则不允许点击修改按钮来切换为编辑状态
             isEditing: true,
+            scrollEnabled: true,
             imageModels: [
                 {
                     imageSource: CJTSDefaultImages.localImageSource1,
@@ -136,22 +136,45 @@ export default class TSImagesChooseListPage extends Component {
 
 
     render() {
+        // const screenWidth = Dimensions.get('window').width;
+        const screenWidth = window.screen.width;
+        const listWidth = screenWidth;
+
         return (
             <div style={{ backgroundColor:"green"}}>
-                <ImagesChooseList
-                    imageModels={this.state.imageModels}
+                <ImageActionCollectionView
+                    style={Object.assign({backgroundColor:'#FFFFFF'}, this.props.style)}   //谨记：这边设置无效
+                    scrollEnabled={this.state.scrollEnabled}
+                    listWidth={listWidth}
+                    sectionInset={{top:5, left:15, bottom:15, right:15}}
+                    cellWidthFromPerRowMaxShowCount={4} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度
+                    // cellWidthFromFixedWidth={80}       // 通过cell的固定宽度来设置每个cell的宽度
+                    widthHeightRatio={70/70}
+                    minimumInteritemSpacing={0}
+                    minimumLineSpacing={0}
+                    forceBoxHorizontalIntervalEqualMinimumInteritemSpacing={true}
+                    dataModels={this.state.imageModels}
+                    // renderCollectionCell={(item, index, defaultCollectCellStyle)=>{}}
+                    imageMaxCount={this.state.imageMaxCount}
 
                     imageLoadedCountChange={this.imageLoadedCountChange}
+                    addImageSource={require('./resources/addImage_common@2x.png')}
 
                     isEditing={this.state.isEditing}
                     browseImageHandle={this.browseImageHandle}
                     addImageHandle={this.addImageHandle}
-                    deleteImageCompleteBlock={(imageModels)=>{
-                        console.log("删除图片");
+                    deleteImageHandle={(index) => {
+                        console.log("删除图片" + index);
+                        let imageModels = this.state.imageModels;
+                        imageModels.splice(index,1);
+
                         this.setState({
                             imageModels: imageModels
                         })
                     }}
+
+                    deleteButtonWidth={24}
+                    imageTopRightForDeleteButtonCenterOffset={2}
                 />
             </div>
 
