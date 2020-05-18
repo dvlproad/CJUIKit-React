@@ -13,9 +13,8 @@
 
 import React from 'react';
 import PropTypes from "prop-types";
-import AddCell from "./ImageCollectionViewCell/AddCell";
-
-import BaseCollectionView from '../Base/BaseCollectionView';
+import BaseCollectionView from './BaseCollectionView';
+import AddCell from "./AddCell";
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
@@ -43,7 +42,7 @@ export default class BaseActionCollectionView extends BaseCollectionView {
         hasAddIconWhenEditing: true,
         imageMaxCount: 10000,
         addImageTopRightPadding: 10,
-        addImageSource: require('../../resources/addImage_common@2x.png'),
+        addImageSource: require('./resources/addImage_common@2x.png'),
         addImageHandle: (buttonIndex)=>{},
     };
 

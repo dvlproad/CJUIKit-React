@@ -29,7 +29,7 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import ImageActionCollectionView, { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
+import ImageActionCollectionView, { ImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
 
 const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
@@ -136,7 +136,7 @@ export default class TSImageActionCollectionViewPage extends Component {
                         })
 
                     }}
-                    addImageSource={require('./resources/addImage_common@2x.png')}
+                    addImageSource={require('./resources/images/addImage_common@2x.png')}
 
                     isEditing={this.state.isEditing}
                     browseImageHandle={(index) => {

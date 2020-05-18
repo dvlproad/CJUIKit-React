@@ -29,7 +29,7 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
+import { ImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
 import ImagesChooseList from './CollectionView/ImageCollectionView/ImagesChooseList';
 
 export const CJTSDefaultImages = {

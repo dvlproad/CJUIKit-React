@@ -9,35 +9,6 @@
  *
  * Copyright (c) dvlproad. All rights reserved.
  */
-/*
-LuckinActionLoadingImage:图片控件(含加载动画和其他可操作事件) 的使用示例
-
-import LuckinActionLoadingImage  from '../../commonUI/image/LKActionLoadingImage';
-
-                <LuckinActionLoadingImage
-                    style={{
-                        width: 164, height: 108, backgroundColor:'red', borderRadius:10,
-                        marginTop: 20,
-                    }}
-                    imageBorderStyle={{
-                        borderRadius: 6,
-                        borderWidth: 3,
-                        borderColor: "cyan",
-                    }}
-                    source={{uri: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562747201772&di=e5e02e2208aea4acdfd1fa92d4a10d42&imgtype=0&src=http%3A%2F%2Fimg1.ph.126.net%2FI9-_x2ze5vz07q7YorAc1Q%3D%3D%2F151715012463950227.jpg'}}
-
-                    isEditing={true}
-                    uploadType={LuckinImageUploadType.Uploading}
-                    uploadProgress={60}
-                    clickButtonHandle={()=>{
-                        LKToastUtil.showMessage('点击图片');
-                    }}
-                    deleteImageHandle={()=>{
-                        LKToastUtil.showMessage('点击删除');
-                    }}
-                />
- */
-
 import React, { Component } from 'react';
 // import { View, TouchableOpacity, ViewPropTypes } from 'react-native';
 // import {

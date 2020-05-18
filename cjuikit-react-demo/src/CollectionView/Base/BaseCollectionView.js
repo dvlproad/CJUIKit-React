@@ -84,10 +84,6 @@ export default class BaseCollectionView extends Component {
         return this.props.renderCollectionCell(item, index, defaultCollectCellStyle);
     }
 
-    renderExtraCell() {
-
-    }
-
     /**
      * 子类一般不用重写，即使用父类的即可；特例，如图片列表界面中的添加按钮，我们就需要额外为数据加一个addImageModel
      * @param dataMRodels   集合视图中的数据

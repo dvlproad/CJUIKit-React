@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import BaseActionCollectionView from "./CollectionView/ImageCollectionView/BaseActionCollectionView";
+import BaseActionCollectionView from "./CollectionView/Base/BaseActionCollectionView";
 
 
 export default class TS2BaseActionCollectionViewPage extends Component {
@@ -46,7 +46,7 @@ export default class TS2BaseActionCollectionViewPage extends Component {
                 hasAddIconWhenEditing={true}
                 imageMaxCount={10000}
                 addImageTopRightPadding={0}
-                addImageSource={require('./resources/addImage_common@2x.png')}
+                addImageSource={require('./resources/images/addImage_common@2x.png')}
                 addImageHandle={(index)=>{
                     console.log("添加图片" + index);
                     // LKToastUtil.showMessage("添加图片" + index);

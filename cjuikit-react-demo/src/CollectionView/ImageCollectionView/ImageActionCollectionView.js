@@ -11,21 +11,19 @@
  * Copyright (c) dvlproad. All rights reserved.
  */
 
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from "prop-types";
 // import {View, ViewPropTypes} from "react-native";
+
+import BaseActionCollectionView from "../Base/BaseActionCollectionView";
 import ImageActionCollectionViewCell  from './ImageCollectionViewCell/ImageActionCollectionViewCell';
-import AddCell from "./ImageCollectionViewCell/AddCell";
 
-// import {CJImageUploadType} from "../image/utils/CJImageUtil";
-
-import BaseCollectionView from '../Base/BaseCollectionView';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
 /// 图片来源
-export var CJImageUploadType = {
+export var ImageUploadType = {
     NotNeed: 0,     /**< 不需要上传 */
     Waiting: 1,     /**< 等待上传 */
     Uploading: 2,   /**< 正在上传 */
@@ -33,9 +31,9 @@ export var CJImageUploadType = {
     Failure: 4,     /**< 上传失败 */
 };
 
-export default class ImageActionCollectionView extends BaseCollectionView {
+export default class ImageActionCollectionView extends Component {
     static propTypes = {
-        ...BaseCollectionView.propTypes,
+        ...BaseActionCollectionView.propTypes,
 
         dataModels: PropTypes.array,
         imageDefaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
@@ -59,7 +57,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
     };
 
     static defaultProps = {
-        ...BaseCollectionView.defaultProps,
+        ...BaseActionCollectionView.defaultProps,
 
         dataModels: [],
         listWidth: 0,
@@ -92,12 +90,13 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         isEditing: false,
         hasAddIconWhenEditing: true,
         imageMaxCount: 10000,
-        addImageSource: require('../../resources/addImage_common@2x.png'),
+        addImageSource: require('./resources/add_image@2x.png'),
     };
 
     constructor(props) {
         super(props);
         this.state = {
+            addIconCurIndex: -1,
             imageLoadedCount: 0//完成加载的图片个数
         }
     }
@@ -116,6 +115,50 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         }
     }
 
+
+    renderDataCollectionCell(item, index, defaultCollectCellStyle) {
+        let richCollectCellStyle = {
+            backgroundColor: 'transparent',
+            borderRadius: 4,
+            borderWidth: 0,
+        };
+        // let collectCellStyle = [defaultCollectCellStyle, richCollectCellStyle];  // TODO: 请确认并修正使用此方式时候，CJLoadingImage的布局
+        let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
+        // let collectCellStyle = defaultCollectCellStyle;
+
+        return (
+            <ImageActionCollectionViewCell
+                key={index.toString()}
+                style={collectCellStyle}
+
+                src={item.imageSource}
+                defaultSource={this.props.imageDefaultSource}
+                imageBorderStyle={this.props.imageBorderStyle}
+
+                buttonIndex={index}
+                // onLoadComplete={this.props.onLoadComplete}
+                onLoadComplete={(buttonIndex)=>{
+                    this.onLoadComplete(buttonIndex)
+                }}
+
+                clickButtonHandle={()=>{
+                    this.props.browseImageHandle(index)
+                }}
+
+                uploadType={item.uploadType}
+                uploadProgress={item.uploadProgress}
+                needLoadingAnimation={item.needLoadingAnimation}
+                changeShowDebugMessage={this.props.changeShowDebugMessage}
+
+                isEditing={this.props.isEditing}
+                // isAddIcon={isAddIcon}
+                deleteImageHandle={this.props.deleteImageHandle}
+                deleteButtonWidth={this.props.deleteButtonWidth}
+                imageTopRightForDeleteButtonCenterOffset={this.props.imageTopRightForDeleteButtonCenterOffset}
+            />
+        );
+    }
+
     onLoadComplete=(buttonIndex)=>{
         this.state.imageLoadedCount = this.state.imageLoadedCount+1;
         let isImageAllLoaded = this.state.imageLoadedCount >= this.props.dataModels.length ? true : false;
@@ -131,129 +174,37 @@ export default class ImageActionCollectionView extends BaseCollectionView {
     }
 
 
-    isAddIcon = (index)=> {
-        if (index === this.state.addIconCurIndex) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    clickButtonHandle = (index)=> {
-        if (index === this.state.addIconCurIndex) {
-            this.props.addImageHandle(index);
-        } else {
-            this.props.browseImageHandle(index);
-        }
-    }
-
-    deleteImageHandle=(index) => {
-        this.props.deleteImageHandle(index);
-    }
-
-    // 获取指定位置的图片的边框(添加按钮的边框默认无)
-    getImageBorderStyle=(index)=>{
-        let imageBorderStyle = this.props.imageBorderStyle;
-        if (this.isAddIcon(index)) {
-            imageBorderStyle = {
-                borderRadius: 6,
-                borderWidth: 0,
-                borderColor: "#E5E5E5",
-            }
-        }
-        return imageBorderStyle;
-    }
-
-    getRenderDataModels(dataModels) {
-        // return super.getRenderDataModels(dataModels);
-
-        let renderImageCount = dataModels.length;
-        let renderImageSources = Array.from(dataModels);
-        const allowAddIconShowing = this.props.isEditing &&
-            this.props.hasAddIconWhenEditing;
-        if (allowAddIconShowing) {
-            let shouldAddAddIcon = renderImageCount < this.props.imageMaxCount;
-            if (shouldAddAddIcon) {
-                this.state.addIconCurIndex = renderImageCount;
-
-                let addImage = {
-                    imageSource: this.props.addImageSource,
-                    uploadType: CJImageUploadType.NotNeed,
-                    uploadProgress: 0,
-                    imageIndex: renderImageCount,
-                };
-                renderImageSources.splice(renderImageCount, 0, addImage);
-
-            } else {
-                this.state.addIconCurIndex = -1;
-            }
-        } else {
-            this.state.addIconCurIndex = -1;
-        }
-        return renderImageSources;
-    }
-
-    renderCollectionCell(item, index, defaultCollectCellStyle) {
-        let richCollectCellStyle = {
-            backgroundColor: 'transparent',
-            borderRadius: 4,
-            borderWidth: 0,
-        };
-        // let collectCellStyle = [defaultCollectCellStyle, richCollectCellStyle];  // TODO: 请确认并修正使用此方式时候，CJLoadingImage的布局
-        let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
-        // let collectCellStyle = defaultCollectCellStyle;
-
-        // Add Cell
-        let isAddIcon = this.isAddIcon(index);
-        const imageTopRightPadding = this.props.deleteButtonWidth/2 - this.props.imageTopRightForDeleteButtonCenterOffset;
-        if (isAddIcon) {
-            return (
-                <AddCell
-                    key={index.toString()}
-                    style={collectCellStyle}
-                    imageTopRightPadding={imageTopRightPadding}
-
-                    src={item.imageSource}
-                    clickButtonHandle={()=>{
-                        this.clickButtonHandle(index);
-                    }}
-                />
-            )
-        }
+    render() {
+        const addImageTopRightPadding = this.props.deleteButtonWidth/2 - this.props.imageTopRightForDeleteButtonCenterOffset;
 
         return (
-            <ImageActionCollectionViewCell
-                key={index.toString()}
-                style={collectCellStyle}
+            <BaseActionCollectionView
+                style={this.props.style}
+                listWidth={this.props.listWidth}
+                sectionInset={this.props.sectionInset}
+                cellWidthFromPerRowMaxShowCount={this.props.cellWidthFromPerRowMaxShowCount} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度
+                // cellWidthFromFixedWidth={165}       // 通过cell的固定宽度来设置每个cell的宽度
+                widthHeightRatio={this.props.widthHeightRatio}
+                minimumInteritemSpacing={this.props.minimumInteritemSpacing}
+                minimumLineSpacing={this.props.minimumLineSpacing}
+                dataModels={this.props.dataModels}
 
-                src={item.imageSource}
-                defaultSource={this.props.imageDefaultSource}
-                imageBorderStyle={this.getImageBorderStyle(index)}
-
-                buttonIndex={index}
-                // onLoadComplete={this.props.onLoadComplete}
-                onLoadComplete={(buttonIndex)=>{
-                    this.onLoadComplete(buttonIndex)
-                }}
-
-                clickButtonHandle={this.clickButtonHandle}
-
-                uploadType={item.uploadType}
-                uploadProgress={item.uploadProgress}
-                needLoadingAnimation={item.needLoadingAnimation}
-                changeShowDebugMessage={this.props.changeShowDebugMessage}
 
                 isEditing={this.props.isEditing}
-                isAddIcon={isAddIcon}
-                deleteImageHandle={this.deleteImageHandle}
-                deleteButtonWidth={this.props.deleteButtonWidth}
-                imageTopRightForDeleteButtonCenterOffset={this.props.imageTopRightForDeleteButtonCenterOffset}
+                hasAddIconWhenEditing={this.props.hasAddIconWhenEditing}
+                imageMaxCount={this.props.imageMaxCount}
+                addImageTopRightPadding={addImageTopRightPadding}
+                addImageSource={this.props.addImageSource}
+                addImageHandle={(index)=>{
+                    console.log("添加图片" + index);
+                    this.props.addImageHandle(index);
+                }}
+
+                renderDataCollectionCell={(item, index, defaultCollectCellStyle)=>{
+                    return this.renderDataCollectionCell(item, index, defaultCollectCellStyle);
+                }}
+                // clickButtonHandle={this._execModuleModel}
             />
         );
-    }
-
-
-    render() {
-        return super.render();
     }
 }

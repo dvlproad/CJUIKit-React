@@ -131,7 +131,7 @@ export default class ImagesChooseList extends Component {
                 imageMaxCount={this.props.imageMaxCount}
 
                 imageLoadedCountChange={this.props.imageLoadedCountChange}
-                addImageSource={require('../../resources/addImage_common@2x.png')}
+                addImageSource={require('./resources/add_image@2x.png')}
 
                 isEditing={this.props.isEditing}
                 browseImageHandle={this.props.browseImageHandle}
