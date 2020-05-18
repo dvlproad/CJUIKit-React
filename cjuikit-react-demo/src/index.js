@@ -23,6 +23,7 @@ import './index.css';
 // import App from './TS52ImageActionWithLoadingCollectionViewCellPage';
 // import App from './TS52ImageActionWithStateTextCollectionViewCellPage';
 
+// import App from './TS2BaseActionCollectionViewPage';
 import App from './TSImageActionCollectionViewPage';
 // import App from './TSImagesChooseListPage';
 

@@ -84,6 +84,10 @@ export default class BaseCollectionView extends Component {
         return this.props.renderCollectionCell(item, index, defaultCollectCellStyle);
     }
 
+    renderExtraCell() {
+
+    }
+
     /**
      * 子类一般不用重写，即使用父类的即可；特例，如图片列表界面中的添加按钮，我们就需要额外为数据加一个addImageModel
      * @param dataMRodels   集合视图中的数据
@@ -94,15 +98,30 @@ export default class BaseCollectionView extends Component {
     }
 
     render() {
-        // 以下值必须二选一设置（默认cellWidthFromFixedWidth设置后，另外一个自动失效）
-        let perRowMaxShowCount = 0;     // 每行最后最多显示多少个
-        let boxWidth = 0;               // box的宽
-        let boxHorizontalInterval = 0;  // 水平方向上box之间的间隔
+
         let sectionInset = this.props.sectionInset;
         if (typeof sectionInset === 'undefined') {
             sectionInset = { top: 0, left: 0, bottom: 0, right: 0 };
         }
         console.log((sectionInset));
+
+        let sectionInsetStyle = {};
+        if (typeof (sectionInset) != 'undefined') {
+            sectionInsetStyle = {
+                paddingTop: sectionInset.top,
+                paddingLeft: sectionInset.left,
+                paddingBottom: sectionInset.bottom,
+                paddingRight: sectionInset.right,
+            }
+        }
+
+
+
+
+        // 以下值必须二选一设置（默认cellWidthFromFixedWidth设置后，另外一个自动失效）
+        let perRowMaxShowCount = 0;     // 每行最后最多显示多少个
+        let boxWidth = 0;               // box的宽
+        let boxHorizontalInterval = 0;  // 水平方向上box之间的间隔
 
         const validWidth = this.props.listWidth - sectionInset.left - sectionInset.right;
         if (this.props.cellWidthFromFixedWidth > 0) { // 按固定宽时候：宽不变，列数变，间距跟着变
@@ -128,7 +147,7 @@ export default class BaseCollectionView extends Component {
 
             const minimumInteritemSpacing = this.props.minimumInteritemSpacing;
             if (ObjectCJHelper.isNullForObject(minimumInteritemSpacing)) {
-                console.log("Error:请设置minimumInteritemSpacing");
+                console.log("Error:请设置minimumInterItemSpacing");
                 expect.assertions(1)
             }
 
@@ -150,15 +169,6 @@ export default class BaseCollectionView extends Component {
         }
         let lastRowStartIndex = (rowCount - 1) * perRowMaxShowCount; //最后一行的索引起点，index从0开始
 
-        let sectionInsetStyle = {};
-        if (typeof (sectionInset) != 'undefined') {
-            sectionInsetStyle = {
-                paddingTop: sectionInset.top,
-                paddingLeft: sectionInset.left,
-                paddingBottom: sectionInset.bottom,
-                paddingRight: sectionInset.right,
-            }
-        }
 
         // let listHeaderComponent = null;
         // if (this.props.showHeader) {

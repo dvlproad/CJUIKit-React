@@ -9,6 +9,34 @@ CJUIKit React
 
 * [css绝对定位居中](https://www.cnblogs.com/qxp140605/p/11793774.html)
 
+  ```
+  方式一(目前使用此方式)：
+  position:'absolute', left: 0, top: 0, right: 0, bottom: 0, margin: "auto",
+  
+  方式二：
+  position:'absolute', left: "50%", top: "50%", transform: "translate(-50%, -50%)",
+  ```
+
+  
+
+* [CSS border-style 属性](https://www.w3school.com.cn/css/pr_border-style.asp)
+
+  ```
+  border-style:dotted solid double dashed; 
+  border-style:上(点状)右(实线)下(双线)左(虚线); 
+  
+  上边框是点状(dotted)
+  右边框是实线(solid)
+  下边框是双线(double)
+  左边框是虚线(dashed)
+  ```
+
+  
+
+
+
+
+
 
 
 随机数：

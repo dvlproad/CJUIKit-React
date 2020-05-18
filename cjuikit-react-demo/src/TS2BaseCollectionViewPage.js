@@ -24,7 +24,7 @@ export default class TS2BaseCollectionViewPage extends Component {
                 sectionInset={{top:15, left:15, bottom:15, right:15}}
                 cellWidthFromPerRowMaxShowCount={2} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度
                 // cellWidthFromFixedWidth={165}       // 通过cell的固定宽度来设置每个cell的宽度
-                widthHeightRatio={165/165}
+                widthHeightRatio={400/165}
                 minimumInteritemSpacing={15}
                 minimumLineSpacing={10}
                 dataModels={imageSources}

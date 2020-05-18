@@ -1,5 +1,5 @@
 /**
- * CJImageLookCollectionView.jsw.js
+ * ImageFromBaseActionCollectionView.jsw.js
  *
  * @Description: 图片列表【不仅显示，且可增删】的集合视图
  *               ImageActionCollectionView（1样式纯自定义，，附情况1样式纯自定义，2含样式已封装成APP风格）
@@ -19,7 +19,7 @@ import AddCell from "./ImageCollectionViewCell/AddCell";
 
 // import {CJImageUploadType} from "../image/utils/CJImageUtil";
 
-import BaseCollectionView from '../Base/BaseCollectionView';
+import BaseActionCollectionView from './BaseActionCollectionView';
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
@@ -33,15 +33,14 @@ export var CJImageUploadType = {
     Failure: 4,     /**< 上传失败 */
 };
 
-export default class ImageActionCollectionView extends BaseCollectionView {
+export default class ImageFromBaseActionCollectionView extends BaseActionCollectionView {
     static propTypes = {
-        ...BaseCollectionView.propTypes,
+        ...BaseActionCollectionView.propTypes,
 
         dataModels: PropTypes.array,
         imageDefaultSource: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
         // imageBorderStyle: stylePropTypes,       // 非添加按钮的图片的边框样式(添加按钮的边框默认无)
 
-        clickButtonHandle: PropTypes.func,
         deleteButtonWidth: PropTypes.number,    // 删除按钮的大小
         imageTopRightForDeleteButtonCenterOffset: PropTypes.number, // 图片右上角坐标与删除按钮中心坐标的偏移(平时默认两个点是重合的，即此值为0；若此需要图片右上角坐标往删除按钮中心的右上角靠，此时图片区域会变大，请填正数；反之，填负数)
 
@@ -59,7 +58,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
     };
 
     static defaultProps = {
-        ...BaseCollectionView.defaultProps,
+        ...BaseActionCollectionView.defaultProps,
 
         dataModels: [],
         listWidth: 0,
@@ -88,11 +87,6 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         browseImageHandle: (buttonIndex)=>{},
         addImageHandle: (buttonIndex)=>{},
         deleteImageHandle: (buttonIndex)=>{},
-
-        isEditing: false,
-        hasAddIconWhenEditing: true,
-        imageMaxCount: 10000,
-        addImageSource: require('../../resources/addImage_common@2x.png'),
     };
 
     constructor(props) {
@@ -131,69 +125,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
     }
 
 
-    isAddIcon = (index)=> {
-        if (index === this.state.addIconCurIndex) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    clickButtonHandle = (index)=> {
-        if (index === this.state.addIconCurIndex) {
-            this.props.addImageHandle(index);
-        } else {
-            this.props.browseImageHandle(index);
-        }
-    }
-
-    deleteImageHandle=(index) => {
-        this.props.deleteImageHandle(index);
-    }
-
-    // 获取指定位置的图片的边框(添加按钮的边框默认无)
-    getImageBorderStyle=(index)=>{
-        let imageBorderStyle = this.props.imageBorderStyle;
-        if (this.isAddIcon(index)) {
-            imageBorderStyle = {
-                borderRadius: 6,
-                borderWidth: 0,
-                borderColor: "#E5E5E5",
-            }
-        }
-        return imageBorderStyle;
-    }
-
-    getRenderDataModels(dataModels) {
-        // return super.getRenderDataModels(dataModels);
-
-        let renderImageCount = dataModels.length;
-        let renderImageSources = Array.from(dataModels);
-        const allowAddIconShowing = this.props.isEditing &&
-            this.props.hasAddIconWhenEditing;
-        if (allowAddIconShowing) {
-            let shouldAddAddIcon = renderImageCount < this.props.imageMaxCount;
-            if (shouldAddAddIcon) {
-                this.state.addIconCurIndex = renderImageCount;
-
-                let addImage = {
-                    imageSource: this.props.addImageSource,
-                    uploadType: CJImageUploadType.NotNeed,
-                    uploadProgress: 0,
-                    imageIndex: renderImageCount,
-                };
-                renderImageSources.splice(renderImageCount, 0, addImage);
-
-            } else {
-                this.state.addIconCurIndex = -1;
-            }
-        } else {
-            this.state.addIconCurIndex = -1;
-        }
-        return renderImageSources;
-    }
-
-    renderCollectionCell(item, index, defaultCollectCellStyle) {
+    renderDataCollectionCell(item, index, defaultCollectCellStyle) {
         let richCollectCellStyle = {
             backgroundColor: 'transparent',
             borderRadius: 4,
@@ -203,24 +135,6 @@ export default class ImageActionCollectionView extends BaseCollectionView {
         let collectCellStyle = Object.assign(defaultCollectCellStyle, richCollectCellStyle);
         // let collectCellStyle = defaultCollectCellStyle;
 
-        // Add Cell
-        let isAddIcon = this.isAddIcon(index);
-        const imageTopRightPadding = this.props.deleteButtonWidth/2 - this.props.imageTopRightForDeleteButtonCenterOffset;
-        if (isAddIcon) {
-            return (
-                <AddCell
-                    key={index.toString()}
-                    style={collectCellStyle}
-                    imageTopRightPadding={imageTopRightPadding}
-
-                    src={item.imageSource}
-                    clickButtonHandle={()=>{
-                        this.clickButtonHandle(index);
-                    }}
-                />
-            )
-        }
-
         return (
             <ImageActionCollectionViewCell
                 key={index.toString()}
@@ -228,7 +142,7 @@ export default class ImageActionCollectionView extends BaseCollectionView {
 
                 src={item.imageSource}
                 defaultSource={this.props.imageDefaultSource}
-                imageBorderStyle={this.getImageBorderStyle(index)}
+                imageBorderStyle={this.props.imageBorderStyle}
 
                 buttonIndex={index}
                 // onLoadComplete={this.props.onLoadComplete}
@@ -236,7 +150,9 @@ export default class ImageActionCollectionView extends BaseCollectionView {
                     this.onLoadComplete(buttonIndex)
                 }}
 
-                clickButtonHandle={this.clickButtonHandle}
+                clickButtonHandle={(index)=> {
+                    this.props.browseImageHandle(index);
+                }}
 
                 uploadType={item.uploadType}
                 uploadProgress={item.uploadProgress}
@@ -244,8 +160,10 @@ export default class ImageActionCollectionView extends BaseCollectionView {
                 changeShowDebugMessage={this.props.changeShowDebugMessage}
 
                 isEditing={this.props.isEditing}
-                isAddIcon={isAddIcon}
-                deleteImageHandle={this.deleteImageHandle}
+                // isAddIcon={isAddIcon}
+                deleteImageHandle={()=>{
+                    this.props.deleteImageHandle(index);
+                }}
                 deleteButtonWidth={this.props.deleteButtonWidth}
                 imageTopRightForDeleteButtonCenterOffset={this.props.imageTopRightForDeleteButtonCenterOffset}
             />

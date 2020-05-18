@@ -31,7 +31,7 @@ import React, {Component} from 'react';
 
 import ImageActionCollectionView, { CJImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
 
-export const CJTSDefaultImages = {
+const CJTSDefaultImages = {
     localImageSource1: require('./img/1.jpg'),
     localImageSource2: require('./img/4.jpg'),
     networkImageSource1:    'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',
@@ -106,35 +106,6 @@ export default class TSImageActionCollectionViewPage extends Component {
     }
 
 
-
-    imageLoadedCountChange= (imageLoadedCount, isImageAllLoaded)=>{
-        //LKToastUtil.showMessage("完成加载的图片个数为:" + imageLoadedCount);
-        // this.state.isImageAllLoaded = isImageAllLoaded;
-        this.setState({
-            isImageAllLoaded: isImageAllLoaded,
-        })
-
-    }
-
-
-    browseImageHandle=(index) => {
-        console.log("浏览图片" + index);
-        // LKToastUtil.showMessage("浏览图片" + index);
-    }
-
-    addImageHandle=(index) => {
-        console.log("添加图片" + index);
-        // LKToastUtil.showMessage("添加图片" + index);
-        let imageModel = {imageSource: CJTSDefaultImages.networkImageCar};
-
-        let imageModels = this.state.imageModels;
-        imageModels.splice(index, 0, imageModel);
-        this.setState({
-            imageModels: imageModels
-        })
-    }
-
-
     render() {
         // const screenWidth = Dimensions.get('window').width;
         const screenWidth = window.screen.width;
@@ -157,12 +128,32 @@ export default class TSImageActionCollectionViewPage extends Component {
                     // renderCollectionCell={(item, index, defaultCollectCellStyle)=>{}}
                     imageMaxCount={this.state.imageMaxCount}
 
-                    imageLoadedCountChange={this.imageLoadedCountChange}
+                    imageLoadedCountChange={(imageLoadedCount, isImageAllLoaded)=>{
+                        //LKToastUtil.showMessage("完成加载的图片个数为:" + imageLoadedCount);
+                        // this.state.isImageAllLoaded = isImageAllLoaded;
+                        this.setState({
+                            isImageAllLoaded: isImageAllLoaded,
+                        })
+
+                    }}
                     addImageSource={require('./resources/addImage_common@2x.png')}
 
                     isEditing={this.state.isEditing}
-                    browseImageHandle={this.browseImageHandle}
-                    addImageHandle={this.addImageHandle}
+                    browseImageHandle={(index) => {
+                        console.log("浏览图片" + index);
+                        // LKToastUtil.showMessage("浏览图片" + index);
+                    }}
+                    addImageHandle={(index) => {
+                        console.log("添加图片" + index);
+                        // LKToastUtil.showMessage("添加图片" + index);
+                        let imageModel = {imageSource: CJTSDefaultImages.networkImageCar};
+
+                        let imageModels = this.state.imageModels;
+                        imageModels.splice(index, 0, imageModel);
+                        this.setState({
+                            imageModels: imageModels
+                        })
+                    }}
                     deleteImageHandle={(index) => {
                         console.log("删除图片" + index);
                         let imageModels = this.state.imageModels;
