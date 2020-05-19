@@ -65,6 +65,8 @@ export default class TS51ImageActionWithNoneCollectionViewCellPage extends Compo
                                     alignItems: 'center'
                                 }}
 
+                                buttonIndex={index}
+
                                 imageSource={imageModel.imageSource}
                                 isEditing={true}
                                 clickButtonHandle={(buttonIndex)=>{
@@ -72,7 +74,7 @@ export default class TS51ImageActionWithNoneCollectionViewCellPage extends Compo
                                 }}
 
                                 deleteImageHandle={(buttonIndex)=>{
-                                    console.log("点击删除按钮" + buttonIndex);
+                                    console.log("点击删除按钮" + index);
                                 }}
                             />
                         )

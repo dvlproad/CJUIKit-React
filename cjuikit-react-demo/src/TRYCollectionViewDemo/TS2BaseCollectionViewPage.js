@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import BaseCollectionView from "./CollectionView/Base/BaseCollectionView";
+import PropTypes from "prop-types";
+import BaseCollectionView from "../CollectionView/Base/BaseCollectionView";
 
 export default class TS2BaseCollectionViewPage extends Component {
     render() {

@@ -4,9 +4,11 @@ import './index.css';
 
 // import App from './App';
 
-// import App from './TS1StudyListPage';
+// TRYCollectionViewDemo(测试 CollectionView)
+// import App from './TRYCollectionViewDemo/TS1StudyListPage';
+// import App from './TRYCollectionViewDemo/TS2BaseCollectionViewPage';
+// import App from './TRYCollectionViewDemo/TS2BaseActionCollectionViewPage';
 
-// import App from './TS2BaseCollectionViewPage';
 
 // import App from './TS31ModuleCollectionViewCellPage';
 // import App from './TS32ModuleCollectionViewPage';
@@ -19,12 +21,12 @@ import './index.css';
 // import App from './TS43ImageLookWithLoadingCollectionViewCellPage';
 // import App from './TS43ImageLookWithStateTextCollectionViewCellPage';
 
-// import App from './TS51ImageActionWithNoneCollectionViewCellPage';
+import App from './TS51ImageActionWithNoneCollectionViewCellPage';
 // import App from './TS52ImageActionWithLoadingCollectionViewCellPage';
 // import App from './TS52ImageActionWithStateTextCollectionViewCellPage';
 
-// import App from './TS2BaseActionCollectionViewPage';
-import App from './TSImageActionCollectionViewPage';
+
+// import App from './TSImageActionCollectionViewPage';
 // import App from './TSImagesChooseListPage';
 
 import * as serviceWorker from './serviceWorker';

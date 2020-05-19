@@ -17,19 +17,12 @@ import PropTypes from "prop-types";
 
 import BaseActionCollectionView from "../Base/BaseActionCollectionView";
 import ImageActionCollectionViewCell  from './ImageCollectionViewCell/ImageActionCollectionViewCell';
-
+import { ImageUploadType as _ImageUploadType } from "./ImageCollectionViewCell/utils/ImageUploadStateTextUtil";
 
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
-/// 图片来源
-export var ImageUploadType = {
-    NotNeed: 0,     /**< 不需要上传 */
-    Waiting: 1,     /**< 等待上传 */
-    Uploading: 2,   /**< 正在上传 */
-    Success: 3,     /**< 上传成功 */
-    Failure: 4,     /**< 上传失败 */
-};
+export var ImageUploadType = _ImageUploadType;
 
 export default class ImageActionCollectionView extends Component {
     static propTypes = {

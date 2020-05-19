@@ -29,7 +29,7 @@ import React, {Component} from 'react';
 //     LKCenterText,
 // } from '@luckin/react-native-theme-uikit';
 
-import { ImageUploadType as LKImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
+import { ImageUploadType }  from './CollectionView/ImageCollectionView/ImageActionCollectionView'
 import ImagesChooseList from './CollectionView/ImageCollectionView/ImagesChooseList';
 
 export const CJTSDefaultImages = {
@@ -73,31 +73,31 @@ export default class TSImagesChooseListPage extends Component {
             imageModels: [
                 {
                     imageSource: CJTSDefaultImages.localImageSource1,
-                    uploadType: LKImageUploadType.NotNeed,
+                    uploadType: ImageUploadType.NotNeed,
                     uploadProgress: 0,
                     imageIndex: 0,
                 },
                 {
                     imageSource: CJTSDefaultImages.networkImageSource1,
-                    uploadType: LKImageUploadType.Uploading,
+                    uploadType: ImageUploadType.Uploading,
                     uploadProgress: 20,
                     imageIndex: 1,
                 },
                 {
                     imageSource: CJTSDefaultImages.networkImageSource1,
-                    uploadType: LKImageUploadType.Uploading,
+                    uploadType: ImageUploadType.Uploading,
                     uploadProgress: 60,
                     imageIndex: 2,
                 },
                 {
                     imageSource: CJTSDefaultImages.networkImageSource1,
-                    uploadType: LKImageUploadType.Success,
+                    uploadType: ImageUploadType.Success,
                     uploadProgress: 100,
                     imageIndex: 3,
                 },
                 {
                     imageSource: CJTSDefaultImages.networkImageSource1,
-                    uploadType: LKImageUploadType.Failure,
+                    uploadType: ImageUploadType.Failure,
                     uploadProgress: 77,
                     imageIndex: 4,
                 },

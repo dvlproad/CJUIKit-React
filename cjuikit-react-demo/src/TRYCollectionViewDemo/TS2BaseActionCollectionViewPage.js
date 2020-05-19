@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
-import BaseActionCollectionView from "./CollectionView/Base/BaseActionCollectionView";
+import BaseActionCollectionView from "../CollectionView/Base/BaseActionCollectionView";
 
 
 export default class TS2BaseActionCollectionViewPage extends Component {

@@ -16,10 +16,11 @@ import React, { Component } from 'react';
 //     LuckinImageButton,
 // } from '@luckin/react-native-base-uikit';
 
-import { LuckinImageUtil, LuckinImageUploadType } from "./utils/LuckinImageUtil";
+import ImageUploadStateTextUtil, { ImageUploadType } from "./utils/ImageUploadStateTextUtil";
 
 import PropTypes from "prop-types";
-import CellActivityIndicatorOverlay from "../../../TRYCollectionViewCell/CellActivityIndicatorOverlay";
+import CellOverlay, { CellOverlayType } from "../../../TRYCollectionViewCell/CellOverlay";
+import CellDeleteButton from "../../../TRYCollectionViewCell/CellDeleteButton";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
@@ -71,7 +72,7 @@ export default class ImageActionCollectionViewCell extends Component {
 
         onLoadComplete: (buttonIndex)=>{},
 
-        uploadType: LuckinImageUploadType.NotNeed,
+        uploadType: ImageUploadType.NotNeed,
         uploadProgress: 0,
         needLoadingAnimation: true,
 
@@ -110,7 +111,7 @@ export default class ImageActionCollectionViewCell extends Component {
         };
         let deleteImageButton = shouldShowDeleteButton ?
             (
-                <LuckinImageDeleteButton
+                <CellDeleteButton
                     style={deleteButtonStyle}
                     onPress={()=> {
                         this.props.deleteImageHandle(this.props.buttonIndex);
@@ -132,15 +133,21 @@ export default class ImageActionCollectionViewCell extends Component {
             marginRight:imageTopRightPadding
         };
 
-        let stateTextHeight = imageHeight;
-        if (this.props.uploadType === LuckinImageUploadType.Success) {
-            stateTextHeight = 0;
-        }
+        // let stateTextHeight = imageHeight;
+        // if (this.props.uploadType === ImageUploadType.Success) {
+        //     stateTextHeight = 0;
+        // }
         //let stateTextHeight = imageHeight * (1-this.props.uploadProgress/100);
+        let stateTextHeightPercent = "0%";
+        if (this.props.uploadType === ImageUploadType.Success) {
+            stateTextHeightPercent = "0%";
+        } else {
+            stateTextHeightPercent = (100-this.props.uploadProgress).toString() + "%";
+        }
 
-        let stateTextString = LuckinImageUtil.getFormalImageStateText(this.props.uploadType, this.props.uploadProgress);
+        let stateTextString = ImageUploadStateTextUtil.getFormalImageStateText(this.props.uploadType, this.props.uploadProgress);
         if (this.props.changeShowDebugMessage) {
-            stateTextString = LuckinImageUtil.getDebugImageStateText(this.props.buttonIndex, this.state.isNetworkImage);
+            stateTextString = ImageUploadStateTextUtil.getDebugImageStateText(this.props.buttonIndex, this.state.isNetworkImage);
         }
 
         let showLoadingHUD = false;
@@ -175,39 +182,21 @@ export default class ImageActionCollectionViewCell extends Component {
                         // needLoadingAnimation={this.props.needLoadingAnimation}
                         // changeShowDebugMessage={this.props.changeShowDebugMessage}
                     />
-                    <CellActivityIndicatorOverlay
+                    <CellOverlay
                         style={Object.assign(
                             {position:'absolute', top: imageTopRightPadding, left: 0, bottom: 0, right: imageTopRightPadding},
                             this.props.imageBorderStyle
                         )}
+                        overlayType={CellOverlayType.StateText}
+
                         hudAnimating={showLoadingHUD}
+
+                        stateTextString={stateTextString}
+                        stateTextHeightPercent={stateTextHeightPercent}
                     />
                     {deleteImageButton}
                 </div>
             </div>
         );
-    }
-}
-
-// 删除的图片按钮
-class LuckinImageDeleteButton extends Component {
-    static propTypes = {
-        onPress: PropTypes.func
-    };
-
-    static defaultProps = {
-        onPress: null,
-    };
-
-
-    render() {
-        return (
-            <img
-                style={this.props.style}
-                src={require('./resources/imageDelete_blue.png')}
-                alt={'alt'}
-                onClick={this.props.onPress}
-            />
-        )
     }
 }

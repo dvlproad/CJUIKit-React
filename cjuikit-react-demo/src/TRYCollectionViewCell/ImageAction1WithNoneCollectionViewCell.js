@@ -19,6 +19,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
+import CellDeleteButton from "./CellDeleteButton";
 
 
 export default class ImageAction1WithNoneCollectionViewCell extends Component {
@@ -101,7 +102,7 @@ export default class ImageAction1WithNoneCollectionViewCell extends Component {
         };
         let deleteImageButton = shouldShowDeleteButton ?
             (
-                <ImageCellDeleteButton
+                <CellDeleteButton
                     style={deleteButtonStyle}
                     onPress={()=> {
                         this.props.deleteImageHandle(this.props.buttonIndex);
@@ -147,28 +148,5 @@ export default class ImageAction1WithNoneCollectionViewCell extends Component {
                 </div>
             </div>
         );
-    }
-}
-
-// 删除的图片按钮
-class ImageCellDeleteButton extends Component {
-    static propTypes = {
-        onPress: PropTypes.func
-    };
-
-    static defaultProps = {
-        onPress: null,
-    };
-
-
-    render() {
-        return (
-            <img
-                style={this.props.style}
-                src={require('./resources/imageDelete_blue.png')}
-                alt={'alt'}
-                onClick={this.props.onPress}
-            />
-        )
     }
 }

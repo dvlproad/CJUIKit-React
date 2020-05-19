@@ -4,7 +4,7 @@ import CellActivityIndicatorOverlay from "./CellActivityIndicatorOverlay";
 import CellStateTextOverlay from "./CellStateTextOverlay";
 
 /// Overlay类型
-var CellOverlayType = {
+export var CellOverlayType = {
     ActivityIndicator: 0,   /**< 加载hud */
     StateText: 1,           /**< stateText */
 };

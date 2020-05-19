@@ -1,5 +1,5 @@
 /**
- * LuckinImageUtil.js
+ * ImageUploadStateTextUtil.js
  *
  * @Description: LuckinImageUtil
  *
@@ -10,8 +10,8 @@
  * Copyright (c) dvlproad. All rights reserved.
  */
 
-/// 图片来源
-export var LuckinImageUploadType = {
+/// 图片的上传状态类型
+export var ImageUploadType = {
     NotNeed: 0,     /**< 不需要上传 */
     Waiting: 1,     /**< 等待上传 */
     Uploading: 2,   /**< 正在上传 */
@@ -19,26 +19,26 @@ export var LuckinImageUploadType = {
     Failure: 4,     /**< 上传失败 */
 };
 
-export class LuckinImageUtil {
+export default class ImageUploadStateTextUtil {
     /**
      * 获取正式的信息
      */
     static getFormalImageStateText=(uploadType, uploadProgress)=> {
         let formalImageStateText = '';
         switch (uploadType) {
-            case LuckinImageUploadType.Waiting: {
+            case ImageUploadType.Waiting: {
                 formalImageStateText = '准备上传';
                 break;
             }
-            case LuckinImageUploadType.Uploading: {
+            case ImageUploadType.Uploading: {
                 formalImageStateText = this.__changeTwoDecimal_f(uploadProgress) + '%';
                 break;
             }
-            case LuckinImageUploadType.Success: {
+            case ImageUploadType.Success: {
                 formalImageStateText = '上传成功';
                 break;
             }
-            case LuckinImageUploadType.Failure: {
+            case ImageUploadType.Failure: {
                 formalImageStateText = '重新上传';
                 break;
             }
@@ -95,23 +95,23 @@ export class LuckinImageUtil {
     static __getDebugImageUploadStateText=(uploadType, uploadProgress)=> {
         let debugImageUploadStateText = '';
         switch (uploadType) {
-            case LuckinImageUploadType.NotNeed: {
+            case ImageUploadType.NotNeed: {
                 debugImageUploadStateText += '\n' + '不需要上传';
                 break;
             }
-            case LuckinImageUploadType.Waiting: {
+            case ImageUploadType.Waiting: {
                 debugImageUploadStateText += '\n' + '等待上传';
                 break;
             }
-            case LuckinImageUploadType.Uploading: {
+            case ImageUploadType.Uploading: {
                 debugImageUploadStateText += '\n' + 'uploadProgress:' + uploadProgress;
                 break;
             }
-            case LuckinImageUploadType.Success: {
+            case ImageUploadType.Success: {
                 debugImageUploadStateText += '\n' + '上传成功';
                 break;
             }
-            case LuckinImageUploadType.Failure: {
+            case ImageUploadType.Failure: {
                 debugImageUploadStateText += '\n' + '上传失败';
                 break;
             }
