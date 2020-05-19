@@ -123,6 +123,7 @@ export default class ImageAction2WithLoadingCollectionViewCell extends Component
                 <div
                     style={{
                         display:'flex',
+                        position: 'relative',
                         flex:1,
                         flexDirection:"row-reverse"
                     }}

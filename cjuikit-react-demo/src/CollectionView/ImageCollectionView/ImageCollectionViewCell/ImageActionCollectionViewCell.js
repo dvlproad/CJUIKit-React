@@ -19,6 +19,7 @@ import React, { Component } from 'react';
 import { LuckinImageUtil, LuckinImageUploadType } from "./utils/LuckinImageUtil";
 
 import PropTypes from "prop-types";
+import CellActivityIndicatorOverlay from "../../../TRYCollectionViewCell/CellActivityIndicatorOverlay";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
 
@@ -142,6 +143,9 @@ export default class ImageActionCollectionViewCell extends Component {
             stateTextString = LuckinImageUtil.getDebugImageStateText(this.props.buttonIndex, this.state.isNetworkImage);
         }
 
+        let showLoadingHUD = false;
+        showLoadingHUD = true;
+
         return (
             <div
                 style={boxStyle}
@@ -152,6 +156,7 @@ export default class ImageActionCollectionViewCell extends Component {
                 <div
                     style={{
                         display:'flex',
+                        position: 'relative',
                         flex:1,
                         flexDirection:"row-reverse"
                     }}
@@ -169,6 +174,13 @@ export default class ImageActionCollectionViewCell extends Component {
                         // stateTextHeight={stateTextHeight}
                         // needLoadingAnimation={this.props.needLoadingAnimation}
                         // changeShowDebugMessage={this.props.changeShowDebugMessage}
+                    />
+                    <CellActivityIndicatorOverlay
+                        style={Object.assign(
+                            {position:'absolute', top: imageTopRightPadding, left: 0, bottom: 0, right: imageTopRightPadding},
+                            this.props.imageBorderStyle
+                        )}
+                        hudAnimating={showLoadingHUD}
                     />
                     {deleteImageButton}
                 </div>

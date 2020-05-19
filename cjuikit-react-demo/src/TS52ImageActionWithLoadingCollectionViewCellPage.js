@@ -56,14 +56,13 @@ export default class TS52ImageActionWithLoadingCollectionViewCellPage extends Co
                                     height: 100,
                                     marginTop: 10,
                                     marginBottom: 10,
-                                    backgroundColor: 'blue',
+                                    backgroundColor: 'white',
                                     borderRadius: 6,
                                     borderWidth: 0,
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    position: 'relative',
                                 }}
 
                                 imageSource={imageModel.imageSource}

@@ -12,12 +12,12 @@ var CellOverlayType = {
 
 export default class CellOverlay extends Component {
     static propTypes = {
-        overlayType: PropTypes.number,
+        overlayType: PropTypes.number,      // overlay类型(默认添加为 ActivityIndicator)
 
         hudAnimating: PropTypes.bool,
         hudText: PropTypes.string,
         stateTextHeight: PropTypes.number,  // 图片上的状态文本视图所占的高度
-        stateTextString: PropTypes.string,   // 图片上的状态文本
+        stateTextString: PropTypes.string,  // 图片上的状态文本
     };
 
     static defaultProps = {

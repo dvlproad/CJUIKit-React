@@ -124,6 +124,7 @@ export default class ImageAction2WithStateTextCollectionViewCell extends Compone
                 <div
                     style={{
                         display:'flex',
+                        position: 'relative',
                         flex:1,
                         flexDirection:"row-reverse"
                     }}

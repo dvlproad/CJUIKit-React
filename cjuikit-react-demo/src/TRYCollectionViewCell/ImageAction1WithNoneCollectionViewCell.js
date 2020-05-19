@@ -133,6 +133,7 @@ export default class ImageAction1WithNoneCollectionViewCell extends Component {
                 <div
                     style={{
                         display:'flex',
+                        position: 'relative',
                         flex:1,
                         flexDirection:"row-reverse"
                     }}

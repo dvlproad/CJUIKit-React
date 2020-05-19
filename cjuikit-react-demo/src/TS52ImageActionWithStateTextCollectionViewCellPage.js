@@ -63,7 +63,6 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                     // flex: 1,
                                     justifyContent: 'center',
                                     alignItems: 'center',
-                                    position: 'relative',
                                 }}
 
                                 imageSource={imageModel.imageSource}
