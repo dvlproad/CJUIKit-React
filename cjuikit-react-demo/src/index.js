@@ -11,9 +11,9 @@ import './index.css';
 // import App from './TRY11CollectionViewDemo/TS114BaseActionCollectionViewPage';
 
 
-// import App from './TS31ModuleCollectionViewCellPage';
-// import App from './TS32ModuleCollectionViewPage';
-// import App from './TS33ModuleActionCollectionViewPage';
+import App from './TSModuleDemo/TS31ModuleCollectionViewCellPage';
+// import App from './TSModuleDemo/TS32ModuleCollectionViewPage';
+// import App from './TSModuleDemo/TS33ModuleActionCollectionViewPage';
 
 
 // TRY21ImageWithNoneCollectionViewCellDemo
@@ -44,7 +44,7 @@ import './index.css';
 
 
 // TRY51ImageWithOverlayCollectionViewCellDemo
-import App from "./TRY51ImageWithOverlayCollectionViewCellDemo/TS511ImageActionWithOverlayCollectionViewCellPage";
+// import App from "./TRY51ImageWithOverlayCollectionViewCellDemo/TS511ImageActionWithOverlayCollectionViewCellPage";
 // import App from './TRY61ImageActionCollectionViewDemo/TS611ImageActionCollectionViewPage';
 // import App from './TRY71ImagesChooseListDemo/TS711ImagesChooseListPage';
 

@@ -75,7 +75,9 @@ export default class ModuleCollectionView extends BaseCollectionView {
                 imageBorderStyle={this.props.imageBorderStyle}
 
                 buttonIndex={index}
-                clickButtonHandle={this.props.clickButtonHandle}
+                clickButtonHandle={()=>{
+                    this.props.clickButtonHandle(index);
+                }}
 
                 needLoadingAnimation={item.needLoadingAnimation}
             />
