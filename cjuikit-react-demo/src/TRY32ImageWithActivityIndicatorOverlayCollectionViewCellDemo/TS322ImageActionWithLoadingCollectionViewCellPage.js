@@ -1,18 +1,18 @@
 /**
- * TS43ImageLookWithLoadingCollectionViewCellPage.js
+ * TS322ImageActionWithLoadingCollectionViewCellPage.js
  *
- * @Description: 测试 ImageLookCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: 测试 ImageActionCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:25
+ * @date        2020-05-16 01:22
  *
  */
 import React, {Component} from 'react';
-import ImageLook2WithLoadingCollectionViewCell from "./ImageLook2WithLoadingCollectionViewCell";
+import ImageAction2WithLoadingCollectionViewCell  from './ImageAction2WithLoadingCollectionViewCell';
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS43ImageLookWithLoadingCollectionViewCellPage extends Component {
+export default class TS322ImageActionWithLoadingCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -30,24 +30,31 @@ export default class TS43ImageLookWithLoadingCollectionViewCellPage extends Comp
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <ImageLook2WithLoadingCollectionViewCell
+                            <ImageAction2WithLoadingCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
                                     height: 100,
                                     marginTop: 10,
                                     marginBottom: 10,
-                                    backgroundColor: 'blue',
+                                    backgroundColor: 'white',
                                     borderRadius: 6,
                                     borderWidth: 0,
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
                                 }}
 
                                 imageSource={imageModel.imageSource}
-                                // clickButtonHandle={this.props.clickButtonHandle}
+                                isEditing={true}
+                                clickButtonHandle={()=>{
+                                    console.log("点击了图片" + index);
+                                }}
+
+                                deleteImageHandle={()=>{
+                                    console.log("点击删除按钮" + index);
+                                }}
                             />
                         )
                     })

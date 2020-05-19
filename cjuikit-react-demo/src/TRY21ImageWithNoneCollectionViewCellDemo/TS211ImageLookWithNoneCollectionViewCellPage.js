@@ -1,18 +1,18 @@
 /**
- * TS43ImageLookWithStateTextCollectionViewCellPage.js
+ * TS211ImageLookWithNoneCollectionViewCellPage.js
  *
- * @Description: 测试 ImageLookCollectionViewCell（3含StateText，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: 测试 ImageLookCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:27
+ * @date        2020-05-16 01:24
  *
  */
 import React, {Component} from 'react';
-import ImageLook2WithStateTextCollectionViewCell from "./ImageLook2WithStateTextCollectionViewCell";
+import ImageLook1WithNoneCollectionViewCell from "./ImageLook1WithNoneCollectionViewCell";
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Component {
+export default class TS211ImageLookWithNoneCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -29,10 +29,8 @@ export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Co
             >
                 {
                     imageModels.map((imageModel, index) => {
-                        let stateTextHeightPercent = (Math.random()*100).toFixed(2) + "%";  // 保留两位小数
-
                         return (
-                            <ImageLook2WithStateTextCollectionViewCell
+                            <ImageLook1WithNoneCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -45,14 +43,11 @@ export default class TS43ImageLookWithStateTextCollectionViewCellPage extends Co
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
-                                    alignItems: 'center',
+                                    alignItems: 'center'
                                 }}
 
                                 imageSource={imageModel.imageSource}
                                 // clickButtonHandle={this.props.clickButtonHandle}
-
-                                stateTextString={stateTextHeightPercent}
-                                stateTextHeightPercent={stateTextHeightPercent}
                             />
                         )
                     })

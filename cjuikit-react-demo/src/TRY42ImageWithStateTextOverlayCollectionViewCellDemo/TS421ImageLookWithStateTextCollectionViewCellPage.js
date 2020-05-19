@@ -1,18 +1,18 @@
 /**
- * TS53ImageActionWithOverlayCollectionViewCellPage.js
+ * TS421ImageLookWithStateTextCollectionViewCellPage.js
  *
- * @Description: 测试 ImageActionCollectionViewCell（4含最终的Overlay，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
+ * @Description: 测试 ImageLookCollectionViewCell（3含StateText，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:22
+ * @date        2020-05-16 01:27
  *
  */
 import React, {Component} from 'react';
-import ImageAction3WithOverlayCollectionViewCell  from './ImageAction3WithOverlayCollectionViewCell';
+import ImageLook2WithStateTextCollectionViewCell from "./ImageLook2WithStateTextCollectionViewCell";
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS53ImageActionWithOverlayCollectionViewCellPage extends Component {
+export default class TS421ImageLookWithStateTextCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -32,7 +32,7 @@ export default class TS53ImageActionWithOverlayCollectionViewCellPage extends Co
                         let stateTextHeightPercent = (Math.random()*100).toFixed(2) + "%";  // 保留两位小数
 
                         return (
-                            <ImageAction3WithOverlayCollectionViewCell
+                            <ImageLook2WithStateTextCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -49,14 +49,7 @@ export default class TS53ImageActionWithOverlayCollectionViewCellPage extends Co
                                 }}
 
                                 imageSource={imageModel.imageSource}
-                                isEditing={true}
-                                clickButtonHandle={()=>{
-                                    console.log("点击了图片" + index);
-                                }}
-
-                                deleteImageHandle={()=>{
-                                    console.log("点击删除按钮" + index);
-                                }}
+                                // clickButtonHandle={this.props.clickButtonHandle}
 
                                 stateTextString={stateTextHeightPercent}
                                 stateTextHeightPercent={stateTextHeightPercent}

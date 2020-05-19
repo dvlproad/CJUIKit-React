@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import CellStateTextOverlay from "./CellStateTextOverlay";
+import CellActivityIndicatorOverlay from "./CellActivityIndicatorOverlay";
 
-export default class TS3StateTextOverlayPage extends Component {
+export default class TS312ActivityIndicatorOverlayPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -9,8 +9,6 @@ export default class TS3StateTextOverlayPage extends Component {
     }
 
     render() {
-        let stateTextHeightPercent = (Math.random()*100).toFixed(2) + "%";  // 保留两位小数
-
         return (
             <div>
                 <div style={{
@@ -20,14 +18,14 @@ export default class TS3StateTextOverlayPage extends Component {
                     marginTop: '20px',
                     marginLeft: '20px',
                     marginRight: '20px',
-                    backgroundColor:'green',
+                    backgroundColor:'yellow',
                 }}>
-                    <CellStateTextOverlay
+                    <CellActivityIndicatorOverlay
                         style={
                             {position:'absolute', top: 0, left: 0, bottom: 0, right: 0,}
                         }
-                        stateTextString={stateTextHeightPercent}
-                        stateTextHeightPercent={stateTextHeightPercent}
+                        hudAnimating={true}
+                        hudText={"正在上传..."}
                     />
                 </div>
             </div>

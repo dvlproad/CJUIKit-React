@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ActivityIndicator, WhiteSpace, Button } from 'antd-mobile';
 import 'antd-mobile/dist/antd-mobile.css';
 
-export default class TS2StudyActivityIndicatorPage extends Component {
+export default class TS311StudyActivityIndicatorPage extends Component {
     constructor(props) {
         super(props);
         this.state = {

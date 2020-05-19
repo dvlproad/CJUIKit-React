@@ -1,5 +1,5 @@
 /**
- * TSImageActionCollectionViewPage.js
+ * TS611ImageActionCollectionViewPage.js
  *
  * @Description: 测试 ImageActionCollectionView（1样式纯自定义，，附情况1样式纯自定义，2含样式已封装成APP风格）
  *
@@ -32,10 +32,10 @@ import React, {Component} from 'react';
 import ImageActionCollectionView, { ImageUploadType }  from './ImageActionCollectionView'
 import TSImageModelsUtil from "../TRY60ImageDataUtil/TSImageModelsUtil";
 
-export default class TSImageActionCollectionViewPage extends Component {
+export default class TS611ImageActionCollectionViewPage extends Component {
     // static navigationOptions = ({ navigation }) => {
     //     return CJTSNavigationFactory.backPageWithRightButtonNavigationOptions({ navigation }, `图片选择列表`, '测试状态切换', ()=>{
-    //         // navigation.navigate('TSImagesChooseListPage', {});
+    //         // navigation.navigate('TS711ImagesChooseListPage', {});
     //         navigation.state.params.changeEditState();
     //     })
     // };

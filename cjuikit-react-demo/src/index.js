@@ -5,10 +5,10 @@ import './index.css';
 // import App from './App';
 
 // TRY11CollectionViewDemo(测试 CollectionView)
-// import App from './TRY11CollectionViewDemo/TS1StudyListPage';
-// import App from './TRY11CollectionViewDemo/TS1StudyImageListPage';
-// import App from './TRY11CollectionViewDemo/TS2BaseCollectionViewPage';
-// import App from './TRY11CollectionViewDemo/TS2BaseActionCollectionViewPage';
+// import App from './TRY11CollectionViewDemo/TS111StudyListPage';
+// import App from './TRY11CollectionViewDemo/TS112StudyImageListPage';
+// import App from './TRY11CollectionViewDemo/TS113BaseCollectionViewPage';
+// import App from './TRY11CollectionViewDemo/TS114BaseActionCollectionViewPage';
 
 
 // import App from './TS31ModuleCollectionViewCellPage';
@@ -17,36 +17,36 @@ import './index.css';
 
 
 // TRY21ImageWithNoneCollectionViewCellDemo
-// import App from './TRY21ImageWithNoneCollectionViewCellDemo/TS42ImageLookWithNoneCollectionViewCellPage';
-// import App from './TRY21ImageWithNoneCollectionViewCellDemo/TS51ImageActionWithNoneCollectionViewCellPage';
+// import App from './TRY21ImageWithNoneCollectionViewCellDemo/TS211ImageLookWithNoneCollectionViewCellPage';
+// import App from './TRY21ImageWithNoneCollectionViewCellDemo/TS212ImageActionWithNoneCollectionViewCellPage';
 
 
 // TRY31ActivityIndicatorOverlayDemo(测试 ActivityIndicatorOverlay)
-// import App from "./TRY31ActivityIndicatorOverlayDemo/TS2StudyActivityIndicatorPage";
-// import App from "./TRY31ActivityIndicatorOverlayDemo/TS2ActivityIndicatorOverlayPage";
+// import App from "./TRY31ActivityIndicatorOverlayDemo/TS311StudyActivityIndicatorPage";
+// import App from "./TRY31ActivityIndicatorOverlayDemo/TS312ActivityIndicatorOverlayPage";
 
 
 // TRY32ImageWithActivityIndicatorOverlayCollectionViewCellDemo
-// import App from './TRY32ImageWithActivityIndicatorOverlayCollectionViewCellDemo/TS43ImageLookWithLoadingCollectionViewCellPage';
-// import App from './TRY32ImageWithActivityIndicatorOverlayCollectionViewCellDemo/TS52ImageActionWithLoadingCollectionViewCellPage';
+// import App from './TRY32ImageWithActivityIndicatorOverlayCollectionViewCellDemo/TS321ImageLookWithLoadingCollectionViewCellPage';
+// import App from './TRY32ImageWithActivityIndicatorOverlayCollectionViewCellDemo/TS322ImageActionWithLoadingCollectionViewCellPage';
 
 
 // TRY41StateTextOverlayDemo(测试 StateTextOverlay)
-// import App from "./TRY41StateTextOverlayDemo/TS3StateTextOverlayPage";
+// import App from "./TRY41StateTextOverlayDemo/TS411StateTextOverlayPage";
+// import App from "./TRY41StateTextOverlayDemo/TS412UploadStateTextOverlayPage";
 
 // TRY42ImageWithStateTextOverlayCollectionViewCellDemo
-// import App from './TRY42ImageWithStateTextOverlayCollectionViewCellDemo/TS43ImageLookWithStateTextCollectionViewCellPage';
-// import App from './TRY42ImageWithStateTextOverlayCollectionViewCellDemo/TS52ImageActionWithStateTextCollectionViewCellPage';
+// import App from './TRY42ImageWithStateTextOverlayCollectionViewCellDemo/TS421ImageLookWithStateTextCollectionViewCellPage';
+// import App from './TRY42ImageWithStateTextOverlayCollectionViewCellDemo/TS422ImageActionWithStateTextCollectionViewCellPage';
 
 
 
 
 
 // TRY51ImageWithOverlayCollectionViewCellDemo
-// import App from "./TRY51ImageWithOverlayCollectionViewCellDemo/TS53ImageActionWithOverlayCollectionViewCellPage";
-
-import App from './TRY61ImageActionCollectionViewDemo/TSImageActionCollectionViewPage';
-// import App from './TRY71ImagesChooseListDemo/TSImagesChooseListPage';
+import App from "./TRY51ImageWithOverlayCollectionViewCellDemo/TS511ImageActionWithOverlayCollectionViewCellPage";
+// import App from './TRY61ImageActionCollectionViewDemo/TS611ImageActionCollectionViewPage';
+// import App from './TRY71ImagesChooseListDemo/TS711ImagesChooseListPage';
 
 import * as serviceWorker from './serviceWorker';
 

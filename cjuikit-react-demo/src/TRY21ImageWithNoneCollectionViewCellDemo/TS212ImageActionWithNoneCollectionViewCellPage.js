@@ -1,7 +1,7 @@
 /**
- * TS52ImageActionWithStateTextCollectionViewCellPage.js
+ * TS212ImageActionWithNoneCollectionViewCellPage.js
  *
- * @Description: 测试 ImageActionCollectionViewCell（3含SateText，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
+ * @Description: 测试 ImageActionCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
@@ -9,10 +9,10 @@
  *
  */
 import React, {Component} from 'react';
-import ImageAction2WithStateTextCollectionViewCell  from './ImageAction2WithStateTextCollectionViewCell';
+import ImageAction1WithNoneCollectionViewCell  from './ImageAction1WithNoneCollectionViewCell';
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS52ImageActionWithStateTextCollectionViewCellPage extends Component {
+export default class TS212ImageActionWithNoneCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -29,10 +29,8 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
             >
                 {
                     imageModels.map((imageModel, index) => {
-                        let stateTextHeightPercent = (Math.random()*100).toFixed(2) + "%";  // 保留两位小数
-
                         return (
-                            <ImageAction2WithStateTextCollectionViewCell
+                            <ImageAction1WithNoneCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -45,7 +43,7 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
-                                    alignItems: 'center',
+                                    alignItems: 'center'
                                 }}
 
                                 imageSource={imageModel.imageSource}
@@ -57,9 +55,6 @@ export default class TS52ImageActionWithStateTextCollectionViewCellPage extends 
                                 deleteImageHandle={()=>{
                                     console.log("点击删除按钮" + index);
                                 }}
-
-                                stateTextString={stateTextHeightPercent}
-                                stateTextHeightPercent={stateTextHeightPercent}
                             />
                         )
                     })

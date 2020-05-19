@@ -1,18 +1,18 @@
 /**
- * TS51ImageActionWithNoneCollectionViewCellPage.js
+ * TS321ImageLookWithLoadingCollectionViewCellPage.js
  *
- * @Description: 测试 ImageActionCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
+ * @Description: 测试 ImageLookCollectionViewCell（2含Loading，附情况1都不含None，2含Loading，3含SateText）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:22
+ * @date        2020-05-16 01:25
  *
  */
 import React, {Component} from 'react';
-import ImageAction1WithNoneCollectionViewCell  from './ImageAction1WithNoneCollectionViewCell';
+import ImageLook2WithLoadingCollectionViewCell from "./ImageLook2WithLoadingCollectionViewCell";
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS51ImageActionWithNoneCollectionViewCellPage extends Component {
+export default class TS321ImageLookWithLoadingCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -30,7 +30,7 @@ export default class TS51ImageActionWithNoneCollectionViewCellPage extends Compo
                 {
                     imageModels.map((imageModel, index) => {
                         return (
-                            <ImageAction1WithNoneCollectionViewCell
+                            <ImageLook2WithLoadingCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -47,14 +47,7 @@ export default class TS51ImageActionWithNoneCollectionViewCellPage extends Compo
                                 }}
 
                                 imageSource={imageModel.imageSource}
-                                isEditing={true}
-                                clickButtonHandle={()=>{
-                                    console.log("点击了图片" + index);
-                                }}
-
-                                deleteImageHandle={()=>{
-                                    console.log("点击删除按钮" + index);
-                                }}
+                                // clickButtonHandle={this.props.clickButtonHandle}
                             />
                         )
                     })

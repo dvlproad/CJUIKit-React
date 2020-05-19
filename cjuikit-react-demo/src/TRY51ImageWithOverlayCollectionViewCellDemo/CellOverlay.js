@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import CellActivityIndicatorOverlay from "../TRY31ActivityIndicatorOverlayDemo/CellActivityIndicatorOverlay";
-import CellStateTextOverlay from "../TRY41StateTextOverlayDemo/CellStateTextOverlay";
+import CellUploadStateTextOverlay, { ImageUploadType as _ImageUploadType} from "../TRY41StateTextOverlayDemo/CellUploadStateTextOverlay";
 
 /// Overlay类型
 export var CellOverlayType = {
@@ -10,14 +10,17 @@ export var CellOverlayType = {
 };
 
 
+export var ImageUploadType = _ImageUploadType;
+
+
 export default class CellOverlay extends Component {
     static propTypes = {
         overlayType: PropTypes.number,      // overlay类型(默认添加为 ActivityIndicator)
 
         hudAnimating: PropTypes.bool,
         hudText: PropTypes.string,
-        stateTextHeightPercent: PropTypes.string,   // 图片上的状态文本视图所占的高度百分比字符串
-        stateTextString: PropTypes.string,          // 图片上的状态文本
+        uploadType: PropTypes.number,       //图片上传类型
+        uploadProgress: PropTypes.number,   //图片上传进度(值范围为0到100)
     };
 
     static defaultProps = {
@@ -25,8 +28,8 @@ export default class CellOverlay extends Component {
 
         hudAnimating: true,
         hudText: null,
-        stateTextHeight: 0,
-        stateTextString: null,
+        uploadType: ImageUploadType.NotNeed,
+        uploadProgress: 0,
     };
 
     constructor(props) {
@@ -39,10 +42,10 @@ export default class CellOverlay extends Component {
     render() {
         if (this.props.overlayType === CellOverlayType.StateText) {
             return (
-                <CellStateTextOverlay
+                <CellUploadStateTextOverlay
                     style={this.props.style}
-                    stateTextString={this.props.stateTextString}
-                    stateTextHeightPercent={this.props.stateTextHeightPercent}
+                    uploadType={this.props.uploadType}
+                    uploadProgress={this.props.uploadProgress}
                 />
             )
         } else {

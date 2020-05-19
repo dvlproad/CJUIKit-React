@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import CellActivityIndicatorOverlay from "./CellActivityIndicatorOverlay";
+import CellUploadStateTextOverlay from "./CellUploadStateTextOverlay";
+import {ImageUploadType} from "../TRY61ImageActionCollectionViewDemo/ImageUploadStateTextUtil";
 
-export default class TS2ActivityIndicatorOverlayPage extends Component {
+export default class TS412UploadStateTextOverlayPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -9,6 +10,9 @@ export default class TS2ActivityIndicatorOverlayPage extends Component {
     }
 
     render() {
+        let uploadProgressString = (Math.random()*100).toFixed(2);  // 保留两位小数
+        let uploadProgress = parseFloat(uploadProgressString);
+
         return (
             <div>
                 <div style={{
@@ -18,14 +22,14 @@ export default class TS2ActivityIndicatorOverlayPage extends Component {
                     marginTop: '20px',
                     marginLeft: '20px',
                     marginRight: '20px',
-                    backgroundColor:'yellow',
+                    backgroundColor:'green',
                 }}>
-                    <CellActivityIndicatorOverlay
+                    <CellUploadStateTextOverlay
                         style={
                             {position:'absolute', top: 0, left: 0, bottom: 0, right: 0,}
                         }
-                        hudAnimating={true}
-                        hudText={"正在上传..."}
+                        uploadType={ImageUploadType.Uploading}
+                        uploadProgress={uploadProgress}
                     />
                 </div>
             </div>

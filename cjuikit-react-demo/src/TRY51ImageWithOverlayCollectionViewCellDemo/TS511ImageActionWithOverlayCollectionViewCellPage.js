@@ -1,18 +1,18 @@
 /**
- * TS42ImageLookWithNoneCollectionViewCellPage.js
+ * TS511ImageActionWithOverlayCollectionViewCellPage.js
  *
- * @Description: 测试 ImageLookCollectionViewCell（1都不含None，附情况1都不含None，2含Loading，3含SateText）
+ * @Description: 测试 ImageActionCollectionViewCell（4含最终的Overlay，附情况1都不含None，2含Loading，3含SateText，4含最终的Overlay）
  *
  * @author      ciyouzen
  * @email       dvlproad@163.com
- * @date        2020-05-16 01:24
+ * @date        2020-05-16 01:22
  *
  */
 import React, {Component} from 'react';
-import ImageLook1WithNoneCollectionViewCell from "./ImageLook1WithNoneCollectionViewCell";
+import ImageAction3WithOverlayCollectionViewCell, { ImageUploadType }  from './ImageAction3WithOverlayCollectionViewCell';
 import TSDataUtil from "../TRY20ImageDataUtil/TSDataUtil";
 
-export default class TS42ImageLookWithNoneCollectionViewCellPage extends Component {
+export default class TS511ImageActionWithOverlayCollectionViewCellPage extends Component {
     render() {
         const imageModels = TSDataUtil.imageModels();
 
@@ -29,8 +29,12 @@ export default class TS42ImageLookWithNoneCollectionViewCellPage extends Compone
             >
                 {
                     imageModels.map((imageModel, index) => {
+                        // let stateTextHeightPercent = (Math.random()*100).toFixed(2) + "%";  // 保留两位小数
+                        let uploadProgressString = (Math.random()*100).toFixed(2);  // 保留两位小数
+                        let uploadProgress = parseFloat(uploadProgressString);
+
                         return (
-                            <ImageLook1WithNoneCollectionViewCell
+                            <ImageAction3WithOverlayCollectionViewCell
                                 key={index.toString()}
                                 style={{
                                     width: 100,
@@ -43,11 +47,21 @@ export default class TS42ImageLookWithNoneCollectionViewCellPage extends Compone
                                     display: 'inline-block',
                                     // flex: 1,
                                     justifyContent: 'center',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
                                 }}
 
                                 imageSource={imageModel.imageSource}
-                                // clickButtonHandle={this.props.clickButtonHandle}
+                                isEditing={true}
+                                clickButtonHandle={()=>{
+                                    console.log("点击了图片" + index);
+                                }}
+
+                                deleteImageHandle={()=>{
+                                    console.log("点击删除按钮" + index);
+                                }}
+
+                                uploadType={ImageUploadType.Uploading}
+                                uploadProgress={uploadProgress}
                             />
                         )
                     })

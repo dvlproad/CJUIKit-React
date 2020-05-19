@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import BaseCollectionView from "../CollectionView/Base/BaseCollectionView";
 
-export default class TS2BaseCollectionViewPage extends Component {
+export default class TS113BaseCollectionViewPage extends Component {
     render() {
         const imageSources = [
             'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg',

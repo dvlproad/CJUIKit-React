@@ -13,9 +13,10 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 // const viewPropTypes = ViewPropTypes || View.propTypes;
 // const stylePropTypes = viewPropTypes.style;
-import CellOverlay, {CellOverlayType} from "./CellOverlay";
+import CellOverlay, {CellOverlayType, ImageUploadType as _ImageUploadType} from "./CellOverlay";
 import CellDeleteButton from "../TRY20ImageDataUtil/CellDeleteButton";
 
+export var ImageUploadType = _ImageUploadType;
 
 export default class ImageAction3WithOverlayCollectionViewCell extends Component {
     static propTypes = {
@@ -33,9 +34,14 @@ export default class ImageAction3WithOverlayCollectionViewCell extends Component
 
         onLoadComplete: PropTypes.func, //图片加载结束的回调
 
-        stateTextHeightPercent: PropTypes.string,   // 图片上的状态文本视图所占的高度百分比字符串
-        stateTextString: PropTypes.string,          // 图片上的状态文本
+        uploadType: PropTypes.number,       //图片上传类型
+        uploadProgress: PropTypes.number,   //图片上传进度(值范围为0到100)
+        // 是否需要加载动画(默认需要)
+        // 有以下体验不友好的情况需要特殊处理：即从本地上传的图片会得到网络图片地址，
+        // 如果此时把网络图片的地址更新上去，会导致再显示菊花loading，不大友好，需要设置本属性为false
+        needLoadingAnimation: PropTypes.bool,
 
+        changeShowDebugMessage: PropTypes.bool,    //将提示信息改为显示调试的信息，此选项默认false
     };
 
     static defaultProps = {
@@ -57,8 +63,11 @@ export default class ImageAction3WithOverlayCollectionViewCell extends Component
 
         onLoadComplete: ()=>{},
 
-        stateTextHeightPercent: "0%",
-        stateTextString: null,
+        uploadType: ImageUploadType.NotNeed,
+        uploadProgress: 0,
+        needLoadingAnimation: true,
+
+        changeShowDebugMessage: false,
     };
 
     constructor(props) {
@@ -113,6 +122,9 @@ export default class ImageAction3WithOverlayCollectionViewCell extends Component
             marginRight:imageTopRightPadding
         };
 
+        let showLoadingHUD = false;
+        showLoadingHUD = true;
+
         return (
             <div
                 style={boxStyle}
@@ -132,17 +144,27 @@ export default class ImageAction3WithOverlayCollectionViewCell extends Component
                         style={imageStyle}
                         src={this.props.imageSource}
                         alt={'alt'}
+                        // defaultSource={this.props.defaultSource}
+                        // imageBorderStyle={this.props.imageBorderStyle}
+                        // onLoadComplete={()=>{
+                        //     this.props.onLoadComplete();
+                        // }}
+                        // stateTextString={stateTextString}
+                        // stateTextHeight={stateTextHeight}
+                        // needLoadingAnimation={this.props.needLoadingAnimation}
+                        // changeShowDebugMessage={this.props.changeShowDebugMessage}
                     />
                     <CellOverlay
                         style={Object.assign(
-                            {position:'absolute', top: 0, left: 0, bottom: 0, right: 0},
+                            {position:'absolute', top: imageTopRightPadding, left: 0, bottom: 0, right: imageTopRightPadding},
                             this.props.imageBorderStyle
                         )}
                         overlayType={CellOverlayType.StateText}
-                        hudAnimating={true}
-                        hudText={null}
-                        stateTextString={this.props.stateTextString}
-                        stateTextHeightPercent={this.props.stateTextHeightPercent}
+
+                        hudAnimating={showLoadingHUD}
+
+                        uploadType={this.props.uploadType}
+                        uploadProgress={this.props.uploadProgress}
                     />
                     {deleteImageButton}
                 </div>

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import BaseActionCollectionView from "../CollectionView/Base/BaseActionCollectionView";
 
 
-export default class TS2BaseActionCollectionViewPage extends Component {
+export default class TS114BaseActionCollectionViewPage extends Component {
     constructor(props) {
         super(props);
 
