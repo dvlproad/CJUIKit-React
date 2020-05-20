@@ -30,7 +30,7 @@ export default class TS114BaseActionCollectionViewPage extends Component {
         return (
             <BaseActionCollectionView
                 // style={{paddingHorizontal: 40}}   //谨记：这边设置无效
-                style={{backgroundColor: 'green', boxSizing: 'border-box'}}
+                style={{backgroundColor: 'green'}}
                 listWidth={listWidth}
                 sectionInset={{top:15, left:15, bottom:15, right:15}}
                 cellWidthFromPerRowMaxShowCount={2} // 水平方向上的列数 & 通过每行可显示的最多个数来设置每个cell的宽度

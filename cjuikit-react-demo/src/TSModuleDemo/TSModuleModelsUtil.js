@@ -27,11 +27,6 @@ export default class TSModuleModelsUtil {
                 imageSource: require('./resources/icon_await_check.png'),
                 nextPageName: "TSDescriptionListPage",
             },
-            {
-                title: "采购单查询6",
-                imageSource: require('./resources/icon_await_check.png'),
-                nextPageName: "TSDescriptionListPage",
-            },
         ];
         return moduleModels;
     }

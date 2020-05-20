@@ -6,7 +6,7 @@ export default class TSImageModelsUtil {
                 {
                     imageSource: require('./resources/1.jpg'),
                     uploadType: ImageUploadType.NotNeed,
-                    uploadProgress: 0,
+                    uploadProgress: 40,
                     imageIndex: 0,
                 },
                 {

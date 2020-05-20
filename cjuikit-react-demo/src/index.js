@@ -11,9 +11,9 @@ import './index.css';
 // import App from './TRY11CollectionViewDemo/TS114BaseActionCollectionViewPage';
 
 
-import App from './TSModuleDemo/TS31ModuleCollectionViewCellPage';
+// import App from './TSModuleDemo/TS31ModuleCollectionViewCellPage';
 // import App from './TSModuleDemo/TS32ModuleCollectionViewPage';
-// import App from './TSModuleDemo/TS33ModuleActionCollectionViewPage';
+import App from './TSModuleDemo/TS33ModuleActionCollectionViewPage';
 
 
 // TRY21ImageWithNoneCollectionViewCellDemo

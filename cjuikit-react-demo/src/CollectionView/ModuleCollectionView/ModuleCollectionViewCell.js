@@ -20,13 +20,11 @@ export default class ModuleCollectionViewCell extends Component {
     static propTypes = {
         moduleModel: PropTypes.object,
         clickButtonHandle: PropTypes.func,
-        buttonIndex: PropTypes.number,
     };
 
     static defaultProps = {
         moduleModel: [],
-        clickButtonHandle: (buttonIndex)=>{},
-        buttonIndex: 0,
+        clickButtonHandle: ()=>{},
     };
 
     constructor(props) {
@@ -40,18 +38,28 @@ export default class ModuleCollectionViewCell extends Component {
     render() {
         return (
             <div
-                style={this.props.style}
+                style={Object.assign(
+                    {
+                        display: 'inline-block',
+                        borderRadius: 6,
+                        borderWidth: 0,
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    },
+                    this.props.style,
+                )}
             >
                 <div
                     style={{
-                        display: 'flex',
+                        display: "flex",
                         height: '100%',
-                        flexDirection:"column",
+                        flexDirection: "column",
                         justifyContent:"center",
                         alignItems:"center",
+                        backgroundColor: 'white',
                     }}
                     onClick={()=> {
-                        this.props.clickButtonHandle(this.props.buttonIndex);
+                        this.props.clickButtonHandle();
                     }}
                 >
                     <img
@@ -64,19 +72,24 @@ export default class ModuleCollectionViewCell extends Component {
                             }
                         }
                         src={this.props.moduleModel.imageSource}
-                        alt=""
+                        alt="moduleImgAlt"
                         resizemode={'stretch'}
                     />
 
-                    <div style={Object.assign({   //单行文本水平&垂直居中
-                        display: 'flex',
-                        justifyContent:"center",
-                        alignItems:"center",
-                        height: 22,
-                        fontSize: 16,
-                        textAlign: 'center',
-                        lineHeight:22,
-                    }, {marginTop: 20})} >
+                    <div
+                        style={Object.assign(
+                            {   //单行文本水平&垂直居中
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                height: 22,
+                                fontSize: 16,
+                                textAlign: "center",
+                                lineHeight: 22,
+                            },
+                            {marginTop: 20}
+                        )}
+                    >
                         {this.props.moduleModel.title}
                     </div>
                 </div>

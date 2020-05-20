@@ -180,7 +180,7 @@ export default class BaseCollectionView extends Component {
 
         return (
             <div style={ObjectCJHelper.dealPropStyle([
-                    { backgroundColor: '#F4F4F4', boxSizing: 'border-box' },
+                    { backgroundColor: '#F4F4F4', boxSizing: 'border-box', },
                     this.props.style,
                     { width: this.props.listWidth},
                     sectionInsetStyle

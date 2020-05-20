@@ -21,6 +21,25 @@ export var ImageUploadType = {
 
 export default class ImageUploadStateTextUtil {
     /**
+     * 获取 stateTextOverlay 高度
+     * @param uploadType
+     * @param uploadProgress
+     */
+    static getStateTextHeightPercent=(uploadType, uploadProgress)=> {
+        return "100%";
+
+        // let stateTextHeightPercent = "0%";
+        // if (uploadType === ImageUploadType.Success) {
+        //     stateTextHeightPercent = "100%";
+        // } else if (uploadType === ImageUploadType.Failure) {
+        //     stateTextHeightPercent = "100%";
+        // } else {
+        //     stateTextHeightPercent = (100-uploadProgress).toString() + "%";
+        // }
+        // return stateTextHeightPercent;
+    }
+
+    /**
      * 获取正式的信息
      */
     static getFormalImageStateText=(uploadType, uploadProgress)=> {
@@ -96,27 +115,27 @@ export default class ImageUploadStateTextUtil {
         let debugImageUploadStateText = '';
         switch (uploadType) {
             case ImageUploadType.NotNeed: {
-                debugImageUploadStateText += '\n' + '不需要上传';
+                debugImageUploadStateText += '\n 不需要上传';
                 break;
             }
             case ImageUploadType.Waiting: {
-                debugImageUploadStateText += '\n' + '等待上传';
+                debugImageUploadStateText += '\n 等待上传';
                 break;
             }
             case ImageUploadType.Uploading: {
-                debugImageUploadStateText += '\n' + 'uploadProgress:' + uploadProgress;
+                debugImageUploadStateText += '\n uploadProgress:' + uploadProgress;
                 break;
             }
             case ImageUploadType.Success: {
-                debugImageUploadStateText += '\n' + '上传成功';
+                debugImageUploadStateText += '\n 上传成功';
                 break;
             }
             case ImageUploadType.Failure: {
-                debugImageUploadStateText += '\n' + '上传失败';
+                debugImageUploadStateText += '\n 上传失败';
                 break;
             }
             default: {
-                debugImageUploadStateText += '\n' + '什么情况';
+                debugImageUploadStateText += '\n 什么情况';
                 break;
             }
         }

@@ -26,17 +26,14 @@ export default class CellUploadStateTextOverlay extends Component {
 
 
     render() {
-        let stateTextHeightPercent = "0%";
-        if (this.props.uploadType === ImageUploadType.Success) {
-            stateTextHeightPercent = "0%";
-        } else {
-            stateTextHeightPercent = (100-this.props.uploadProgress).toString() + "%";
-        }
+        let stateTextHeightPercent = ImageUploadStateTextUtil.getStateTextHeightPercent(this.props.uploadType, this.props.uploadProgress);
+        // console.log("stateTextHeightPercent = " + stateTextHeightPercent);
 
         let stateTextString = ImageUploadStateTextUtil.getFormalImageStateText(this.props.uploadType, this.props.uploadProgress);
         if (this.props.changeShowDebugMessage) {
             stateTextString = ImageUploadStateTextUtil.getDebugImageStateText(this.props.buttonIndex, this.state.isNetworkImage);
         }
+        // console.log("stateTextString = " + stateTextString);
 
         return (
             <CellStateTextOverlay

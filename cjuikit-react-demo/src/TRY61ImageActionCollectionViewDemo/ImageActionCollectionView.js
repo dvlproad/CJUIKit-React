@@ -154,7 +154,10 @@ export default class ImageActionCollectionView extends Component {
     }
 
     onLoadComplete=(index)=>{
-        this.state.imageLoadedCount = this.state.imageLoadedCount+1;
+        let imageLoadedCount = this.state.imageLoadedCount+1;
+        this.setState({
+            imageLoadedCount: imageLoadedCount,
+        });
         let isImageAllLoaded = this.state.imageLoadedCount >= this.props.dataModels.length ? true : false;
         this.props.imageLoadedCountChange(this.state.imageLoadedCount, isImageAllLoaded);
 

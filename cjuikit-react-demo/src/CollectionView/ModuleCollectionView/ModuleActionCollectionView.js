@@ -31,6 +31,7 @@ export default class ModuleActionCollectionView extends Component {
 
     _execModuleModel= (index)=>{
         let moduleModel = this.props.moduleModels[index];
+        console.log( '点击了moduleIndex = ' + index + "; title" + moduleModel.title);
 
         if (moduleModel.clickButtonHandle) {
             moduleModel.clickButtonHandle(index, moduleModel);

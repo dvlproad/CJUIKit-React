@@ -8,65 +8,9 @@
  * @date        2019-11-14 15:07:19
  *
  */
-/*  使用示例：
-                <ImagesChooseList
-                    imageModels={[
-                        {
-                            imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
-                            uploadType: ImageUploadType.NotNeed,
-                            uploadProgress: 0,
-                            imageIndex: 0,
-                        },
-                        {
-                            imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
-                            uploadType: ImageUploadType.Uploading,
-                            uploadProgress: 20,
-                            imageIndex: 1,
-                        },
-                        {
-                            imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
-                            uploadType: ImageUploadType.Uploading,
-                            uploadProgress: 60,
-                            imageIndex: 2,
-                        },
-                        {
-                            imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
-                            uploadType: ImageUploadType.Success,
-                            uploadProgress: 100,
-                            imageIndex: 3,
-                        },
-                        {
-                            imageSource: {uri: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3460118221,780234760&fm=26&gp=0.jpg'},
-                            uploadType: ImageUploadType.Failure,
-                            uploadProgress: 77,
-                            imageIndex: 4,
-                        },
-                    ]}
-                    imageMaxCount={5}
-
-                    imageLoadedCountChange={(imageLoadedCount, isImageAllLoaded)=>{
-                        //Alert.alert("完成加载的图片个数为:" + imageLoadedCount);
-                        this.state.isImageAllLoaded = isImageAllLoaded;
-                    }}
-
-                    isEditing={this.state.isEditing}
-                    browseImageHandle={(index) => {
-                        Alert.alert("浏览图片" + index);
-                    }}
-                    addImageHandle={(index) => {
-                        Alert.alert("添加图片" + index);
-                    }}
-                    deleteImageCompleteBlock={(imageModels)=>{
-                        this.setState({
-                            imageModels: imageModels
-                        })
-                    }}
-                />
- */
 import React, {Component} from 'react';
 // import { Dimensions } from 'react-native';
 import PropTypes from "prop-types";
-// import { LuckinImageActionCollectionView } from '@luckin/react-native-base-list';
 import ImageActionCollectionView, { ImageUploadType as _ImageUploadType } from '../TRY61ImageActionCollectionViewDemo/ImageActionCollectionView';
 
 export var ImageUploadType = _ImageUploadType;

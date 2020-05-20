@@ -18,7 +18,7 @@ import React, { Component } from 'react';
 
 // import { ModuleActionCollectionView } from '@luckin/react-native-theme-list';
 
-import  ModuleActionCollectionView from '../CollectionView/ModuleCollectionView/ModuleActionCollectionView';
+import ModuleActionCollectionView from '../CollectionView/ModuleCollectionView/ModuleActionCollectionView';
 import TSModuleModelsUtil from "./TSModuleModelsUtil";
 
 export default class TS33ModuleActionCollectionViewPage extends Component {
